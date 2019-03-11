@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+	This file is part of the DITA-OT Prism-JS Plug-in project.
+	See the accompanying LICENSE file for applicable licenses.
+-->
+<project  name="fox.jason.pretty-dita">
+
+	<target name="pretty-dita">
+
+		
+		<fileset id="dist.contents" dir="${args.input.dir}" casesensitive="yes">
+  			<include name="**/*.dita"/>
+  			<include name="**/*.ditamap"/>
+		</fileset>
+		<prettify-files dir="${args.input.dir}" toDir="${args.input.dir}" refid="dist.contents"/>
+	</target>
+
+	<target name="pretty-dita.init">
+		<typedef file="${dita.plugin.fox.jason.pretty-dita.dir}/resource/antlib.xml"/>
+
+		<dita-ot-fail id="DOTA069F">
+			<condition>
+				<not>
+					<available file="${args.input}" type="file"/>
+				</not>
+			</condition>
+			<param name="1" value="${args.input}"/>
+		</dita-ot-fail>
+		<dirname property="args.input.dir" file="${args.input}"/>
+	</target>
+
+
+	<!--
+		Ant target executed to run a unit test suite.
+	-->
+	<target depends="build-init,pretty-dita.init,pretty-dita" name="dita2pretty-dita"/>
+
+</project>

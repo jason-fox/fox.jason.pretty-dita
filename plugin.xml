@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin id="fox.jason.pretty-dita">
+
+	<!--
+		Define package details.
+	-->
+	<feature extension="package.version" value="1.0.0"/>
+  
+	<feature extension="dita.conductor.transtype.check" value="pretty"/>
+	<transtype abstract="false" desc="Prettify the DITA files for a given document" name="pretty-dita"/>
+
+	<feature extension="ant.import" file="build_dita2pretty-dita.xml"/>
+
+</plugin>
