@@ -64,9 +64,6 @@ var pluginDir =  project.getProperty("dita.plugin.fox.jason.pretty-dita.dir");
 var file = attributes.get("file");
 var dir = attributes.get("dir");
 
-
-project.log(file);
-
 eval('' + org.apache.tools.ant.util.FileUtils.readFully(
       new java.io.FileReader(pluginDir + '/resource/pretty.js' ) ) );
 
