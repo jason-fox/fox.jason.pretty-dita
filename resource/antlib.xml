@@ -117,7 +117,7 @@ Prettify.writeDITA(file, tidy);
 			</xmlcatalog>
 
 
-			<local name="copy.file.1"/>
+			<local name="copy.file"/>
 
 			<tempfile deleteonexit="true" destdir="${dita.temp.dir}" property="copy.file"/>
 			<xslt force="true" in="@{dir}/@{src}" out="${copy.file}" style="${dita.plugin.fox.jason.pretty-dita.dir}/xsl/pretty.xsl">
