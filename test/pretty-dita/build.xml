@@ -2,7 +2,7 @@
 <project basedir="." default="unit-test">
 	<import file="../bootstrap.xml"/>
 	<description>
-		Expect that the xkcd transtype invokes an xkcd splash screen
+		Expect that the pretty-dita transtype tidies up a DITA file
 	</description>
 	<target name="unit-test">
 		<copy file="topic.xml" tofile="topic.dita" overwrite="true"/>
