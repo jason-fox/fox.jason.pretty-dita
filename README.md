@@ -31,12 +31,11 @@ This is a DITA prettifier DITA-OT Plug-in which formats DITA XML in an aesthetic
   &lt;script src="prism.js"&gt;&lt;/script&gt;
   &lt;/body&gt;
 &lt;/html&gt;</codeblock>
-<p>Prism does its best to encourage good authoring practices.  Therefore,it only works with <codeph>&lt;code&gt;</codeph> elements,  since marking upcode without a <codeph>&lt;code&gt;</codeph> element is semantically invalid.<xref format="html" scope="external" href="https://www.w3.org/TR/html52/textlevel-semantics.html#the-code-element">According to the HTML5 spec</xref>, the recommended way to define a code language is a <codeph>language-xxxx</codeph> class, which is what Prism uses. Alternatively, Prism also supports a shorter version: <codeph>lang-xxxx</codeph>.
+   <p>Prism does its best to encourage good authoring practices.  Therefore,it only works with <codeph>&lt;code&gt;</codeph> elements,  since marking upcode without a <codeph>&lt;code&gt;</codeph> element is semantically invalid.<xref format="html" scope="external" href="https://www.w3.org/TR/html52/textlevel-semantics.html#the-code-element">According to the HTML5 spec</xref>, the recommended way to define a code language is a <codeph>language-xxxx</codeph> class, which is what Prism uses. Alternatively, Prism also supports a shorter version: <codeph>lang-xxxx</codeph>.
 </p>
-<p> To make things easier however, Prism assumes that this language definition is inherited. Therefore, if multiple <codeph>&lt;code&gt;</codeph> elements have the same language, you can add the <codeph>language-xxxx</codeph> class on one of their common ancestors. This way, you can also define a document-wide default language, by adding a <codeph>language-xxxx</codeph> class on the <codeph>&lt;body&gt;</codeph> or <codeph>&lt;html&gt;</codeph> element.
-</p>
-<p> If you want to opt-out of highlighting for a <codeph>&lt;code&gt;</codeph> element that is a descendant of an element with a declared code language, you can add the class <codeph>language-none</codeph> to it (or any non-existing language, really).
-</p>
+    <p> To make things easier however, Prism assumes that this language definition is inherited. Therefore, if multiple <codeph>&lt;code&gt;</codeph> elements have the same language, you can add the <codeph>language-xxxx</codeph> class on one of their common ancestors. This way, you can also define a document-wide default language, by adding a <codeph>language-xxxx</codeph> class on the <codeph>&lt;body&gt;</codeph> or <codeph>&lt;html&gt;</codeph> element.</p>
+   <p> If you want to opt-out of highlighting for a <codeph>&lt;code&gt;</codeph> element that is a descendant of an element with a declared code language, you can add the class <codeph>language-none</codeph> to it (or any non-existing language, really).
+  </p>
 <p> The <xref format="html" scope="external" href="https://www.w3.org/TR/html5/grouping-content.html#the-pre-element">recommended way to mark up a code block</xref> (both for semantics and for Prism) is a <codeph>&lt;pre&gt;</codeph> element with a <codeph>&lt;code&gt;</codeph> element inside, like so:
 </p>
 <codeblock>&lt;pre&gt;&lt;code class="language-css"&gt;p { color: red }&lt;/code&gt;&lt;/pre&gt;</codeblock>
