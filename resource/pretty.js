@@ -38,17 +38,13 @@ Prettify.writeDITA = function(file, dita){
 Prettify.analyseDITA = function(dita) {
 
 	var codeblock= false;
-	var p;
-	var li;
 
 	var lines = dita.split('\n');
 	var text =[];
 	var str = [];
 	var doctype = null;
-
-
-
-	
+	var blockEl = false;
+	var indent = 0;
 
 	var splitAtSpace = function (text){
 		var space = text.lastIndexOf(' ', 80);
@@ -71,7 +67,7 @@ Prettify.analyseDITA = function(dita) {
 		var text = str.join(' ');
 		var split = 0;
 		var arr =[];
-		var spaces = new Array(indent + 4).join(' ');
+		var spaces = new Array(indent).join(' ');
 
 		while (split > -1){
 		  var split = splitAtSpace(text);
@@ -80,12 +76,7 @@ Prettify.analyseDITA = function(dita) {
 		  text = text.substring(split);
 		}
 
-		var newText = arr.join('\n' + spaces);
-		var first = newText.indexOf('>') + 1;
-		var last = newText.lastIndexOf('<');
-
-		return newText.substring(0, first) + '\n ' + spaces + newText.substring(first, last) + '\n' +
-			 new Array(indent).join(' ') + newText.substring(last).trim();		
+		return spaces + ' ' + arr.join('\n' + spaces);
 	}
 
 
@@ -109,35 +100,31 @@ Prettify.analyseDITA = function(dita) {
 			codeblock = true;
 		} else if (lines[i].endsWith('/codeblock>')){
 			codeblock = false;
-		} 
-		if(!codeblock){
-			if (lines[i].match(/^\s+<p(>| )/) && !lines[i].endsWith('</p>') ){
-				p = lines[i].indexOf('<');
-				str.push(lines[i]);
-			} else if (lines[i].match(/^\s+<li(>| )/) && !lines[i].endsWith('</li>') ){
-				li= lines[i].indexOf('<');
-				str.push(lines[i]);
-			} else if (p || li){
-				str.push(lines[i].trim());
-			} else if (!p && !li){
-				text.push(lines[i])
-			}
+		}
 
-			if (p && lines[i].endsWith('</p>')  ){
-				text.push(splitText(str, p));
-				p = 0;
-				str =[];
-			}
-			if (li && lines[i].endsWith('</li>')  ){
-				text.push(splitText(str, li));
-				li = 0;
-				str =[];
-			}  
-		} else {
+		if(codeblock) {
 			text.push(lines[i]);
+		} else {
+			blockEl = lines[i].match(/^\s*<.*>$/);
+
+			if (blockEl){
+
+				if (str.length > 0){
+					text.push(splitText(str,indent + 2));
+				}
+				text.push(lines[i]);
+
+				indent = lines[i].indexOf('<');
+				str = [];
+			} else {
+				var line  = lines[i].trim();
+				if(line.length > 0){
+					str.push(line);
+				}
+			}
+			
 		}
 	}
-
 	return text.join('\n');
 }
 
