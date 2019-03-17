@@ -64,6 +64,7 @@ for (i = 0; i < filesets.size(); ++i) {
 <![CDATA[
 
 var pluginDir =  project.getProperty("dita.plugin.fox.jason.pretty-dita.dir");
+var indentStyle =  project.getProperty("args.pretty-dita.style");
 
 var file = attributes.get("file");
 var dir = attributes.get("dir");
@@ -73,7 +74,7 @@ eval('' + org.apache.tools.ant.util.FileUtils.readFully(
 
 var dita = org.apache.tools.ant.util.FileUtils.readFully(
 				new java.io.FileReader( file));
-var tidy = Prettify.analyseDITA(dita);
+var tidy = Prettify.analyseDITA(dita, indentStyle);
 Prettify.writeDITA(file, tidy);
 
 ]]>
@@ -127,6 +128,7 @@ Prettify.writeDITA(file, tidy);
 			<xslt force="true" in="@{dir}/@{src}" out="${copy.file}" style="${dita.plugin.fox.jason.pretty-dita.dir}/xsl/pretty.xsl">
 				<xmlcatalog refid="fake.dita.catalog"/>
 				<param expression="${args.pretty-dita.indent}" name="INDENT"/>
+				<param expression="${args.pretty-dita.style}" name="STYLE"/>
 			</xslt>
 
 			<tidy-dita file="${copy.file}"/>

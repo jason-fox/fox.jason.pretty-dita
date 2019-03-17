@@ -30,6 +30,7 @@
 		<dirname property="args.input.dir" file="${args.input}"/>
 
 		<property name="args.pretty-dita.indent" value="4"/>
+		<property name="args.pretty-dita.style" value="tabs"/>
 	</target>
 
 

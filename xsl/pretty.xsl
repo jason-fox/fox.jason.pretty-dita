@@ -5,9 +5,17 @@
 -->
 
 <xsl:param as="xs:integer" name="INDENT" select="4"/>
+<xsl:param as="xs:string" name="STYLE" select="spaces"/>
 
 <xsl:variable name="indentSpaces">
-   <xsl:text>      </xsl:text>
+   <xsl:choose> 
+       <xsl:when test="$STYLE='tabs'">
+         <xsl:text>&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;</xsl:text>
+       </xsl:when>
+       <xsl:otherwise>
+         <xsl:text>&#32;&#32;&#32;&#32;&#32;&#32;</xsl:text>
+      </xsl:otherwise>
+   </xsl:choose>
 </xsl:variable>
 
 <xsl:variable name="newline">

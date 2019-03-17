@@ -40,7 +40,7 @@ Prettify.writeDITA = function(file, dita){
 	task.perform();
 }
 
-Prettify.analyseDITA = function(dita) {
+Prettify.analyseDITA = function(dita, style) {
 
 	var codeblock= false;
 	var closeCodeblock = false;
@@ -51,6 +51,7 @@ Prettify.analyseDITA = function(dita) {
 	var doctype = null;
 	var blockEl = false;
 	var indent = 0;
+	var indentStyle = style === 'tabs' ? '\t' : ' ';
 
 	var splitAtSpace = function (text){
 		var space = text.lastIndexOf(' ', 80);
@@ -73,7 +74,7 @@ Prettify.analyseDITA = function(dita) {
 		var text = str.join(' ');
 		var split = 0;
 		var arr =[];
-		var spaces = new Array(indent).join(' ');
+		var spaces = new Array(indent).join(indentStyle);
 
 		while (split > -1){
 		  var split = splitAtSpace(text);

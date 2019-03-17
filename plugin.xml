@@ -21,6 +21,10 @@
 			<val>5</val>
 			<val>6</val>
 		</param>
+		<param name="args.pretty-dita.style" desc="Whether to indent using tabs or spaces" type="enum">
+			<val>tabs</val>
+			<val default="true">spaces</val>
+		</param>
 	</transtype>
 
 </plugin>
