@@ -38,6 +38,7 @@ Prettify.writeDITA = function(file, dita){
 Prettify.analyseDITA = function(dita) {
 
 	var codeblock= false;
+	var closeCodeblock = false;
 
 	var lines = dita.split('\n');
 	var text =[];
@@ -107,10 +108,14 @@ Prettify.analyseDITA = function(dita) {
 		} else if (lines[i].trim().startsWith('<codeblock')){
 			codeblock = true;
 		} else if (lines[i].endsWith('/codeblock>')){
+			closeCodeblock = true;
 			codeblock = false;
 		}
 
-		if(codeblock) {
+		if (closeCodeblock){
+			text.push(lines[i]);
+			closeCodeblock = false;
+		} else if(codeblock) {
 			text.push(lines[i]);
 		} else {
 			blockEl = lines[i].match(/^\s*<.*>$/);

@@ -17,7 +17,7 @@
   ...
   &lt;script src="prism.js"&gt;&lt;/script&gt;
   &lt;/body&gt;
-          &lt;/html&gt;</codeblock>
+&lt;/html&gt;</codeblock>
         <p>
           Prism does its best to encourage good authoring practices.  Therefore,it only
           works with <codeph>&lt;code&gt;</codeph> elements,  since marking upcode
