@@ -11,3 +11,8 @@ PATH_TO_DITA_OT/bin/dita -f pretty-dita -i document.ditamap
 ```
 
 The files will be updated in place.
+
+### Parameter Reference
+
+-   `args.pretty-dita.indent` - How many characters to indent (default `4`)
+-   `args.pretty-dita.style` - Whether to indent using tabs or spaces (default `spaces`)
