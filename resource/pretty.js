@@ -71,8 +71,16 @@ Prettify.analyseDITA = function(dita) {
 
 		while (split > -1){
 		  var split = splitAtSpace(text);
+
+		  if (split !== -1){
+		  	  arr.push(text.substring(0,split));
+		  } else if (arr.length > 0) {
+		  	arr[arr.length - 1] = arr[arr.length - 1] + text; 
+		  } else {
+		  	 arr.push(text); 
+		  }
 		  
-		  arr.push(split === -1 ? text: text.substring(0,split));
+		 
 		  text = text.substring(split);
 		}
 
@@ -127,8 +135,3 @@ Prettify.analyseDITA = function(dita) {
 	}
 	return text.join('\n');
 }
-
-
-
-
-

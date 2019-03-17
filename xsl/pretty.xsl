@@ -31,36 +31,38 @@
 
       <xsl:copy>
 
-         <!-- Block elements requiring a new line are listed here -->
-         <xsl:if test="self::p|self::shortdesc|self::li|self::note">
-            <xsl:value-of select="$newline"/>
-            <xsl:copy-of select="@*"/>
-            <xsl:apply-templates>
-               <xsl:with-param name="depth" select="$depth + 1"/>
-            </xsl:apply-templates>
-            <xsl:value-of select="$newline"/>
-
-            <xsl:call-template name="indent">
-               <xsl:with-param name="depth" select="$depth"/>
-            </xsl:call-template>
-         </xsl:if>
-
-
-         <xsl:if test="self::*">
-            <!-- Basic block elements are processed here -->
-            <xsl:copy-of select="@*"/>
-            <xsl:apply-templates>
-               <xsl:with-param name="depth" select="$depth + 1"/>
-            </xsl:apply-templates>
-
-            <xsl:if test="count(*) &gt; 0">
+         <xsl:choose>
+            <!-- Block elements requiring a new line are listed here -->
+            <xsl:when test="self::p|self::shortdesc|self::li|self::note">
+               <xsl:value-of select="$newline"/>
+               <xsl:copy-of select="@*"/>
+               <xsl:apply-templates>
+                  <xsl:with-param name="depth" select="$depth + 1"/>
+               </xsl:apply-templates>
                <xsl:value-of select="$newline"/>
 
                <xsl:call-template name="indent">
                   <xsl:with-param name="depth" select="$depth"/>
                </xsl:call-template>
-            </xsl:if>
-         </xsl:if>
+            </xsl:when>
+
+
+            <xsl:when test="self::*">
+               <!-- Basic block elements are processed here -->
+               <xsl:copy-of select="@*"/>
+               <xsl:apply-templates>
+                  <xsl:with-param name="depth" select="$depth + 1"/>
+               </xsl:apply-templates>
+
+               <xsl:if test="count(*) &gt; 0">
+                  <xsl:value-of select="$newline"/>
+
+                  <xsl:call-template name="indent">
+                     <xsl:with-param name="depth" select="$depth"/>
+                  </xsl:call-template>
+               </xsl:if>
+            </xsl:when>
+         </xsl:choose>
       </xsl:copy>
 
       <xsl:variable name="isLastNode" select="count(../..) = 0 and position() = last()"/>
