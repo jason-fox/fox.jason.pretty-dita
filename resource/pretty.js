@@ -1,3 +1,8 @@
+/*
+ *  This file is part of the DITA-OT Pretty DITA Plug-in project.
+ *  See the accompanying LICENSE file for applicable licenses.
+ */
+
 var Prettify={};
 
 

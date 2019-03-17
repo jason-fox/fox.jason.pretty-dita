@@ -1,5 +1,14 @@
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="2.0">
+<!--
+   This file is part of the DITA-OT Pretty DITA Plug-in project.
+   See the accompanying LICENSE file for applicable licenses.
+-->
 
+<xsl:param as="xs:integer" name="INDENT" select="4"/>
+
+<xsl:variable name="indentSpaces">
+   <xsl:text>      </xsl:text>
+</xsl:variable>
 
 <xsl:variable name="newline">
 <xsl:text>
@@ -83,7 +92,7 @@
    <xsl:template name="indent">
       <xsl:param name="depth"/>
       <xsl:if test="$depth &gt; 0">
-         <xsl:text>    </xsl:text>
+         <xsl:value-of select="substring($indentSpaces,1,$INDENT)"/>
          <xsl:call-template name="indent">
             <xsl:with-param name="depth" select="$depth - 1"/>
          </xsl:call-template>

@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?><!--
-	This file is part of the DITA-OT Prism-JS Plug-in project.
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	This file is part of the DITA-OT Pretty DITA Plug-in project.
 	See the accompanying LICENSE file for applicable licenses.
 -->
 <project  name="fox.jason.pretty-dita">
@@ -11,6 +12,7 @@
   			<include name="**/*.dita"/>
   			<include name="**/*.ditamap"/>
 		</fileset>
+
 		<prettify-files dir="${args.input.dir}" toDir="${args.input.dir}" refid="dist.contents"/>
 	</target>
 
@@ -26,6 +28,8 @@
 			<param name="1" value="${args.input}"/>
 		</dita-ot-fail>
 		<dirname property="args.input.dir" file="${args.input}"/>
+
+		<property name="args.pretty-dita.indent" value="4"/>
 	</target>
 
 
