@@ -124,7 +124,7 @@ Prettify.analyseDITA = function(dita, style) {
 		} else if(codeblock) {
 			text.push(lines[i]);
 		} else {
-			blockEl = lines[i].match(/^\s*<.*>$/);
+			blockEl = lines[i].match(/^\s*<.*>$/) && ((lines[i] + ' ').split('<').length < 4);
 
 			if (blockEl){
 
