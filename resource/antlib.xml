@@ -125,14 +125,21 @@ Prettify.writeDITA(file, tidy);
 			<local name="copy.file"/>
 
 			<tempfile deleteonexit="true" destdir="${dita.temp.dir}" property="copy.file"/>
-			<xslt force="true" in="@{dir}/@{src}" out="${copy.file}" style="${dita.plugin.fox.jason.pretty-dita.dir}/xsl/dita2pretty-dita.xsl">
+
+			<local name="prettier.ignore"/>
+			<condition property="prettier.ignore">
+				<resourcecontains resource="@{dir}/@{src}" substring="&lt;!-- prettier-ignore"/>
+			</condition>
+
+
+			<xslt unless:set="prettier.ignore" force="true" in="@{dir}/@{src}" out="${copy.file}" style="${dita.plugin.fox.jason.pretty-dita.dir}/xsl/dita2pretty-dita.xsl">
 				<xmlcatalog refid="fake.dita.catalog"/>
 				<param if="args.pretty-dita.indent"  expression="${args.pretty-dita.indent}" name="INDENT" type="INT"/>
 				<param if="args.pretty-dita.style"  expression="${args.pretty-dita.style}" name="STYLE"/>
 			</xslt>
 
-			<tidy-dita file="${copy.file}"/>
-			<copy file="${copy.file}" tofile="@{toDir}/@{src}"/>
+			<tidy-dita unless:set="prettier.ignore" file="${copy.file}"/>
+			<copy unless:set="prettier.ignore" file="${copy.file}" tofile="@{toDir}/@{src}"/>
 
 		</sequential>
 	</macrodef>
