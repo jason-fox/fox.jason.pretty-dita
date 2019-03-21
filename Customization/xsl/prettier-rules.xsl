@@ -49,7 +49,7 @@
 
 
 	<!-- Inline elements are listed here -->
-	<xsl:template match="b|i|sup|sub|codeph|xref|xmlatt|xmlelement|ph">
+	<xsl:template match="ph|codeph|synph|filepath|msgph|userinput|systemoutput|b|u|i|tt|sup|sub|uicontrol|menucascade|term|xref|cite|q|boolean|state|keyword|option|parmname|apiname|cmdname|msgnum|varname|wintitle|tm|fn|indextermref|indexterm">
 		<xsl:call-template name="inline-element"/>
 	</xsl:template>
 
