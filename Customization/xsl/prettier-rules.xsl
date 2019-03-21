@@ -53,7 +53,7 @@
 		<xsl:call-template name="inline-element"/>
 	</xsl:template>
 	<!-- Inline xmlconstruct elements are listed here -->
-	<xsl:template match="xmlatt|xmlelement">
+	<xsl:template match="numcharref|parameterentity|textentity|xmlatt|xmlelement|xmlnsname|xmlpi">
 		<xsl:call-template name="inline-element"/>
 	</xsl:template>
 	<!-- Inline typographic elements are listed here -->
