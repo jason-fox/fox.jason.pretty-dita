@@ -26,7 +26,7 @@
 		<xsl:copy>
 			<xsl:choose>
 				<!-- Block elements requiring a new line are listed here -->
-				<xsl:when test="self::p|self::shortdesc|self::li|self::note">
+				<xsl:when test="self::p|self::shortdesc|self::li|self::note|self::lq">
 					<xsl:call-template name="indented-block">
 						<xsl:with-param name="depth" select="$depth"/>
 					</xsl:call-template>
@@ -48,10 +48,32 @@
 	</xsl:template>
 
 
-	<!-- Inline elements are listed here -->
-	<xsl:template match="ph|codeph|synph|filepath|msgph|userinput|systemoutput|b|u|i|tt|sup|sub|uicontrol|menucascade|term|xref|cite|q|boolean|state|keyword|option|parmname|apiname|cmdname|msgnum|varname|wintitle|tm|fn|indextermref|indexterm">
+	<!-- Inline body elements are listed here -->
+	<xsl:template match="ph|codeph|synph|term|xref|cite|q|boolean|state|keyword|option|tm|fn|xref">
 		<xsl:call-template name="inline-element"/>
 	</xsl:template>
+	<!-- Inline xmlconstruct elements are listed here -->
+	<xsl:template match="xmlatt|xmlelement">
+		<xsl:call-template name="inline-element"/>
+	</xsl:template>
+	<!-- Inline typographic elements are listed here -->
+	<xsl:template match="b|i|sup|sub|tt|u">
+		<xsl:call-template name="inline-element"/>
+	</xsl:template>
+	<!-- Inline software elements are listed here -->
+	<xsl:template match="filepath|msgph|userinput|systemoutput|cmdname|msgnum|varname">
+		<xsl:call-template name="inline-element"/>
+	</xsl:template>
+	<!-- Inline userinteface elements are listed here -->
+	<xsl:template match="uicontrol|menucascade|wintitle">
+		<xsl:call-template name="inline-element"/>
+	</xsl:template>
+	<!-- Inline programming elements are listed here -->
+	<xsl:template match="parmname|apiname">
+		<xsl:call-template name="inline-element"/>
+	</xsl:template>
+
+
 
 
 	<!-- Escape newlines within text nodes, for readability. -->
