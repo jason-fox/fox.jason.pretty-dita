@@ -54,11 +54,11 @@ always placed on a separate line before displaying the text found within them:
 The following elements are treated as inline elements, they do not warrant an additional line and are kept within the
 surrounding text
 
--   Body elements: `ph`,`codeph`,`synph`,`term`,`xref`,`cite`,`q`,`boolean`,`state`,`keyword`,`option`, `tm`,`fn`,`xref`
--   Programming elements: `parmname`,`apiname`
--   Typographic elements: `b`,`i`,`sup`,`sub`,`tt`,`u`
--   Software elements: `filepath`,`msgph`,`userinput`,`systemoutput`,`cmdname`,`msgnum`,`varname`
--   Userinteface elements: `uicontrol`,`menucascade`,`wintitle`
+-   Body elements: `ph`, `codeph`, `synph`, `term`, `xref`, `cite`, `q`, `boolean`, `state`, `keyword`, `option`, `tm`, `fn`, `xref`
+-   Programming elements: `parmname`, `apiname`
+-   Typographic elements: `b`, `i`, `sup`, `sub`, `tt`, `u`
+-   Software elements: `filepath`, `msgph`, `userinput`, `systemoutput`, `cmdname`, `msgnum`, `varname`
+-   Userinteface elements: `uicontrol`, `menucascade`, `wintitle`
 -   XML Mention Domain: `numcharref`, `parameterentity`, `textentity`, `xmlatt`, `xmlelement`, `xmlnsname`, `xmlpi`
 
 #### Example
