@@ -8,7 +8,7 @@ well-defined set of rules.
 By default all DITA elements (not listed in the categories below) are indented one level further than the containing
 DITA element
 
-#### Example
+<h4>Example</h4>
 
 ```xml
 <topic id="basic-usage">
@@ -26,7 +26,7 @@ always placed on a separate line before displaying the text found within them:
 
 -   `abstract`, `p`, `shortdesc`, `li`, `note`, `lq`
 
-#### Example
+<h4>Example</h4>
 
 ```xml
 <ul>
@@ -61,7 +61,7 @@ surrounding text
 -   Userinteface elements: `uicontrol`, `menucascade`, `wintitle`
 -   XML Mention Domain: `numcharref`, `parameterentity`, `textentity`, `xmlatt`, `xmlelement`, `xmlnsname`, `xmlpi`
 
-#### Example
+<h4>Example</h4>
 
 ```xml
 <p>
@@ -77,7 +77,7 @@ level further than the surrounding text. Long lines of text are truncated to app
 default before adding a carriage return. Carriage returns are usually placed so as not to split inline elements, but
 this is sometimes not feasable within the line limits, so a line break may occur before an inline attribute.
 
-#### Example
+<h4>Example</h4>
 
 ```xml
 <p>
