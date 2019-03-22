@@ -1,21 +1,18 @@
-Pretty DITA for DITA-OT
-=========================
+# Pretty DITA for DITA-OT
 
 [![license](https://img.shields.io/github/license/jason-fox/fox.jason.pretty-dita.svg)](http://www.apache.org/licenses/LICENSE-2.0)
-[![DITA-OT 3.3](https://img.shields.io/badge/DITA--OT-3.3-blue.svg)](http://www.dita-ot.org/3.3/)
-<br/>
+[![DITA-OT 3.3](https://img.shields.io/badge/DITA--OT-3.3-blue.svg)](http://www.dita-ot.org/3.3/) <br/>
 [![Build Status](https://travis-ci.org/jason-fox/fox.jason.pretty-dita.svg?branch=master)](https://travis-ci.org/jason-fox/fox.jason.pretty-dita)
 [![Coverage Status](https://coveralls.io/repos/github/jason-fox/fox.jason.pretty-dita/badge.svg?branch=master)](https://coveralls.io/github/jason-fox/fox.jason.pretty-dita?branch=master)
 [![Documentation Status](https://readthedocs.org/projects/pretty-dita-ot/badge/?version=latest)](https://pretty-dita-ot.readthedocs.io/en/latest/?badge=latest)
 
-
-This is a DITA prettifier DITA-OT Plug-in which formats DITA XML in an aesthetically pleasing manner. `<topic>` elements, `<section>` elements,
-`<p>` elements etc are regularly indented so the raw DITA XML files can be scanned by humans:
+This is a DITA prettifier DITA-OT Plug-in which formats DITA XML in an aesthetically pleasing manner. `<topic>`
+elements, `<section>` elements, `<p>` elements etc are regularly indented so the raw DITA XML files can be scanned by
+humans:
 
 ### Unformatted DITA
 
-A typical DITA file can contain long lines, missing carriage returns
-and un-aligned elements:
+A typical DITA file can contain long lines, missing carriage returns and un-aligned elements:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -51,12 +48,10 @@ and un-aligned elements:
 </topic>
 ```
 
-
 ### Formatted DITA
 
-After running `pretty-dita` the same file will have all its elements aligned,
-each block element on a new line and text should not overrun the side of a
-typical view screen (approx 120 characters)
+After running `pretty-dita` the same file will have all its elements aligned, each block element on a new line and text
+should not overrun the side of a typical view screen (approx 120 characters)
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -142,23 +137,41 @@ typical view screen (approx 120 characters)
 </topic>
 ```
 
+# Table of Contents
 
+-   [Install](#install)
+    -   [Installing DITA-OT](#installing-dita-ot)
+    -   [Installing the Plug-in](#installing-the-plug-in)
+-   [Usage](#usage)
+    -   [Prettifying DITA files for a document](#prettifying-dita-files-for-a-document)
+    -   [Parameter Reference](#parameter-reference)
+    -   [Ignoring DITA files](#ignoring-dita-files)
+-   [Formatting Rules](#formatting-rules)
+    -   [Basic Block Elements](#basic-block-elements)
+    -   [Indented Block Elements](#indented-block-elements)
+    -   [Inline Elements](#inline-elements)
+    -   [Text Elements](#text-elements)
+    -   [Whitespace sensitive elements](#whitespace-sensitive-elements)
+-   [Contribute](#contribute)
+-   [License](#license)
 
-Install
-=======
+# Install
 
-The Pretty DITA for DITA-OT has been tested against [DITA-OT 3.x](http://www.dita-ot.org/download). It is recommended that you upgrade to the latest version.
+The Pretty DITA for DITA-OT has been tested against [DITA-OT 3.x](http://www.dita-ot.org/download). It is recommended
+that you upgrade to the latest version.
 
-Installing DITA-OT
-------------------
+## Installing DITA-OT
 
 The Pretty DITA for DITA-OT is a plug-in for the DITA Open Toolkit.
 
--  Full installation instructions for downloading DITA-OT can be found [here](https://www.dita-ot.org/3.2/topics/installing-client.html).
+-   Full installation instructions for downloading DITA-OT can be found
+    [here](https://www.dita-ot.org/3.2/topics/installing-client.html).
 
-    1.  Download the `dita-ot-3.3.zip` package from the project website at [dita-ot.org/download](https://www.dita-ot.org/download)
+    1.  Download the `dita-ot-3.3.zip` package from the project website at
+        [dita-ot.org/download](https://www.dita-ot.org/download)
     2.  Extract the contents of the package to the directory where you want to install DITA-OT.
-    3.  **Optional**: Add the absolute path for the `bin` directory to the _PATH_ system variable. This defines the necessary environment variable to run the `dita` command from the command line.
+    3.  **Optional**: Add the absolute path for the `bin` directory to the _PATH_ system variable. This defines the
+        necessary environment variable to run the `dita` command from the command line.
 
 ```console
 curl -LO https://github.com/dita-ot/dita-ot/releases/download/3.3/dita-ot-3.3.zip
@@ -166,10 +179,9 @@ unzip -q dita-ot-3.3.zip
 rm dita-ot-3.3.zip
 ```
 
-Installing the Plug-in
-----------------------
+## Installing the Plug-in
 
--  Run the plug-in installation command:
+-   Run the plug-in installation command:
 
 ```console
 dita -install https://github.com/jason-fox/fox.jason.pretty-dita/archive/master.zip
@@ -177,9 +189,7 @@ dita -install https://github.com/jason-fox/fox.jason.pretty-dita/archive/master.
 
 The `dita` command line tool requires no additional configuration.
 
-
-Usage
-=====
+# Usage
 
 Like any other transform, when invoked directly, the prettier requires an input document
 
@@ -198,11 +208,9 @@ The files will be updated in place.
 -   `args.pretty-dita.indent` - How many characters to indent (default `4`)
 -   `args.pretty-dita.style` - Whether to indent using tabs or spaces (default `spaces`)
 
-
 ### Ignoring DITA files
 
-The prettifier will ignore any DITA file containing a comment starting
-`prettier-ignore` - the file will not be updated.
+The prettifier will ignore any DITA file containing a comment starting `prettier-ignore` - the file will not be updated.
 
 ```xml
 ...
@@ -221,17 +229,15 @@ This file really doesn't need formatting
 </topic>
 ```
 
-Formatting Rules
-================
+# Formatting Rules
 
-The pretty-dita DITA-OT Plug-in is an **opinionated** code formatter, DITA files are
-formatted to according to a well-defined set of rules.
-
+The pretty-dita DITA-OT Plug-in is an **opinionated** code formatter, DITA files are formatted to according to a
+well-defined set of rules.
 
 ### Basic Block Elements
 
-By default all DITA elements (not listed in the categories below) are indented
-one level further than the containing DITA element
+By default all DITA elements (not listed in the categories below) are indented one level further than the containing
+DITA element
 
 #### Example
 
@@ -244,14 +250,12 @@ one level further than the containing DITA element
 </topic>
 ```
 
-
 ### Indented Block Elements
 
-The following elements frequently contain a large body of text
-within them. The opening and closing tags are therefore always
-placed on a separate line before displaying the text found within them:
+The following elements frequently contain a large body of text within them. The opening and closing tags are therefore
+always placed on a separate line before displaying the text found within them:
 
-- `p`, `shortdesc`, `li`, `note`, `lq`
+-   `abstract`, `p`, `shortdesc`, `li`, `note`, `lq`
 
 #### Example
 
@@ -276,26 +280,17 @@ placed on a separate line before displaying the text found within them:
 </ul>
 ```
 
-
-
 ### Inline Elements
 
-The following elements are treated as inline elements, they do not warrant
-an additional line and are kept within the surrounding text
+The following elements are treated as inline elements, they do not warrant an additional line and are kept within the
+surrounding text
 
--   Body elements:
-    `ph`,`codeph`,`synph`,`term`,`xref`,`cite`,`q`,`boolean`,`state`,`keyword`,`option`,
-    `tm`,`fn`,`xref`
--   Programming elements:
-    `parmname`,`apiname`
--   Typographic elements:
-    `b`,`i`,`sup`,`sub`,`tt`,`u`
--   Software elements:
-    `filepath`,`msgph`,`userinput`,`systemoutput`,`cmdname`,`msgnum`,`varname`
--   Userinteface elements:
-    `uicontrol`,`menucascade`,`wintitle`
--   XML Mention Domain:
-    `numcharref`, `parameterentity`, `textentity`, `xmlatt`, `xmlelement`, `xmlnsname`, `xmlpi`
+-   Body elements: `ph`,`codeph`,`synph`,`term`,`xref`,`cite`,`q`,`boolean`,`state`,`keyword`,`option`, `tm`,`fn`,`xref`
+-   Programming elements: `parmname`,`apiname`
+-   Typographic elements: `b`,`i`,`sup`,`sub`,`tt`,`u`
+-   Software elements: `filepath`,`msgph`,`userinput`,`systemoutput`,`cmdname`,`msgnum`,`varname`
+-   Userinteface elements: `uicontrol`,`menucascade`,`wintitle`
+-   XML Mention Domain: `numcharref`, `parameterentity`, `textentity`, `xmlatt`, `xmlelement`, `xmlnsname`, `xmlpi`
 
 #### Example
 
@@ -306,16 +301,12 @@ an additional line and are kept within the surrounding text
 </p>
 ```
 
-
 ### Text Elements
 
-Text elements on a single line are kept within the containing element Text element on
-multiple lines are indented one level further than the surrounding text. Long lines
-of text are truncated to approximately 80 characters length by default before adding
-a carriage return. Carriage returns are usually placed so as not to split inline elements,
-but this is sometimes not feasable within the line limits, so a line break may occur
-before an inline attribute.
-
+Text elements on a single line are kept within the containing element Text element on multiple lines are indented one
+level further than the surrounding text. Long lines of text are truncated to approximately 80 characters length by
+default before adding a carriage return. Carriage returns are usually placed so as not to split inline elements, but
+this is sometimes not feasable within the line limits, so a line break may occur before an inline attribute.
 
 #### Example
 
@@ -328,14 +319,13 @@ before an inline attribute.
 </p>
 ```
 
-### Whitesapce sensitive elements
+### Whitespace sensitive elements
 
 The following elements are whitespace sensitive and require special processing:
 
-- `codeblock`, `lines`, `msgblock`, `pre`
+-   `codeblock`, `lines`, `msgblock`, `pre`
 
-The opening tag of a `<codeblock>` is indented normally, the text within a `<codeblock>` (if any)
-is not indented
+The opening tag of a `<codeblock>` is indented normally, the text within a `<codeblock>` (if any) is not indented
 
 ```xml
 <topic id="basic-usage">
@@ -367,11 +357,14 @@ is not indented
 </codeblock>
 ```
 
+Other white-space sensitive elements such as `<lines>` are supported in a similar manner. If processing is found to be
+incorrect due to embedded elements, it is suggested that the author uses the `pretty-ignore` directive to maintain
+whitespace.
 
-Other white-space sensitive elements (e.g. `<lines>` are supported in a similar manner.  If processing is found to be incorrect due to embedded elements, it is suggested that the author uses the `pretty-ignore` directive to maintain whitespace.
+# Contribute
 
+PRs accepted.
 
-License
-=======
+# License
 
 [Apache 2.0](LICENSE) © 2019 Jason Fox
