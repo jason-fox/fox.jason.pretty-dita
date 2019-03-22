@@ -1,12 +1,12 @@
 <h1>Pretty DITA for DITA-OT</h1>
 
-This is a DITA prettifier DITA-OT Plug-in which formats DITA XML in an aesthetically pleasing manner. `<topic>` elements, `<section>` elements,
-`<p>` elements etc are regularly indented so the raw DITA XML files can be scanned by humans:
+This is a DITA prettifier DITA-OT Plug-in which formats DITA XML in an aesthetically pleasing manner. `<topic>`
+elements, `<section>` elements, `<p>` elements etc are regularly indented so the raw DITA XML files can be scanned by
+humans:
 
 ### Unformatted DITA
 
-A typical DITA file can contain long lines, missing carriage returns
-and un-aligned elements:
+A typical DITA file can contain long lines, missing carriage returns and un-aligned elements:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -44,12 +44,10 @@ and un-aligned elements:
 </topic>
 ```
 
-
 ### Formatted DITA
 
-After running `pretty-dita` the same file will have all its elements aligned,
-each block element on a new line and text should not overrun the side of a
-typical view screen (approx 120 characters)
+After running `pretty-dita` the same file will have all its elements aligned, each block element on a new line and text
+should not overrun the side of a typical view screen (approx 120 characters)
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
