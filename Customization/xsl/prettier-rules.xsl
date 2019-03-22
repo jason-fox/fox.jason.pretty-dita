@@ -25,8 +25,14 @@
 
 		<xsl:copy>
 			<xsl:choose>
-				<!-- Block elements requiring a new line are listed here -->
-				<xsl:when test="self::p|self::shortdesc|self::li|self::note|self::lq">
+				<!-- Basic topic elements requiring a new line are listed here -->
+				<xsl:when test="self::abstract|self::shortdesc">
+					<xsl:call-template name="indented-block">
+						<xsl:with-param name="depth" select="$depth"/>
+					</xsl:call-template>
+				</xsl:when>
+				<!-- Basic body elements requiring a new line are listed here -->
+				<xsl:when test="self::p|self::p|self::li|self::note|self::lq">
 					<xsl:call-template name="indented-block">
 						<xsl:with-param name="depth" select="$depth"/>
 					</xsl:call-template>
@@ -57,7 +63,7 @@
 		<xsl:call-template name="inline-element"/>
 	</xsl:template>
 	<!-- Inline typographic elements are listed here -->
-	<xsl:template match="b|i|sup|sub|tt|u">
+	<xsl:template match="b|i|sup|sub|tt|u|line-through|overline">
 		<xsl:call-template name="inline-element"/>
 	</xsl:template>
 	<!-- Inline software elements are listed here -->

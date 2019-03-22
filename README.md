@@ -221,7 +221,8 @@ This file really doesn't need formatting
 </topic>
 ```
 
-# Formatting Rules
+Formatting Rules
+================
 
 The pretty-dita DITA-OT Plug-in is an **opinionated** code formatter, DITA files are
 formatted to according to a well-defined set of rules.
@@ -263,7 +264,7 @@ placed on a separate line before displaying the text found within them:
       To separate it from other items in the list, the formatter puts a bullet beside it.
     </li>
     <li>
-      The following paragraph, contained in the list item element, is part of the list 
+      The following paragraph, contained in the list item element, is part of the list
       item which contains it.
         <p>
           This is the contained paragraph.
@@ -300,7 +301,7 @@ an additional line and are kept within the surrounding text
 
 ```xml
 <p>
-  <b>STOP!</b> This is <b>very</b> important! Unplug the unit <i>before</i> placing the 
+  <b>STOP!</b> This is <b>very</b> important! Unplug the unit <i>before</i> placing the
   metal screwdriver against the terminal screw.
 </p>
 ```
@@ -327,7 +328,11 @@ before an inline attribute.
 </p>
 ```
 
-### Codeblock processing
+### Whitesapce sensitive elements
+
+The following elements are whitespace sensitive and require special processing:
+
+- `codeblock`, `lines`, `msgblock`, `pre`
 
 The opening tag of a `<codeblock>` is indented normally, the text within a `<codeblock>` (if any)
 is not indented
@@ -357,14 +362,13 @@ is not indented
 `<codeblock>` elements containing `<coderef>` elements are indented as shown:
 
 ```xml
- <codeblock outputclass="language-markup">
+<codeblock outputclass="language-markup">
     <coderef href="../src/logo.svg"/>
 </codeblock>
 ```
 
 
-Other white-space sensitive elements (e.g. `<lines>` are currently not supported. It is suggested
-that the author uses the `pretty-ignore` directive to maintain whitespace.
+Other white-space sensitive elements (e.g. `<lines>` are supported in a similar manner.  If processing is found to be incorrect due to embedded elements, it is suggested that the author uses the `pretty-ignore` directive to maintain whitespace.
 
 
 License

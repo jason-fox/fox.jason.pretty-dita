@@ -53,6 +53,10 @@ Prettify.analyseDITA = function(dita, style) {
 	var indent = 0;
 	var indentStyle = style === 'tabs' ? '\t' : ' ';
 
+	var reStart = /^\s+<(codeblock|lines|msgblock|pre)(>| )/;
+	var reEnd = /<\/(codeblock|lines|msgblock|pre)>/;
+
+
 	var splitAtSpace = function (text){
 		var space = text.lastIndexOf(' ', 80);
 		if(space < 1 ){
@@ -109,11 +113,11 @@ Prettify.analyseDITA = function(dita, style) {
 
 		}
 
-		if (lines[i].match(/^\s+<codeblock(>| )/) && lines[i].endsWith('</codeblock>') ){
+		if (lines[i].match(reStart) && lines[i].match(reEnd) ){
 			// Nothing
-		} else if (lines[i].trim().startsWith('<codeblock')){
+		} else if (lines[i].match(reStart)){
 			codeblock = true;
-		} else if (lines[i].endsWith('/codeblock>')){
+		} else if (lines[i].match(reEnd)){
 			closeCodeblock = true;
 			codeblock = false;
 		}
