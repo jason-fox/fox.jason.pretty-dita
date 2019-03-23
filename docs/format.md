@@ -24,7 +24,8 @@ DITA element
 The following elements frequently contain a large body of text within them. The opening and closing tags are therefore
 always placed on a separate line before displaying the text found within them:
 
--   `abstract`, `p`, `shortdesc`, `li`, `note`, `lq`
+-   Topic elements: `abstract`, `shortdesc`
+-   Body elements: `p`,  `li`, `note`, `lq`
 
 <h4>Example</h4>
 
@@ -54,7 +55,8 @@ always placed on a separate line before displaying the text found within them:
 The following elements are treated as inline elements, they do not warrant an additional line and are kept within the
 surrounding text
 
--   Body elements: `ph`, `codeph`, `synph`, `term`, `xref`, `cite`, `q`, `boolean`, `state`, `keyword`, `option`, `tm`, `fn`, `xref`
+-   Body elements: `ph`, `codeph`, `synph`, `term`, `xref`, `cite`, `q`, `boolean`, `state`, `keyword`, `option`, `tm`,
+    `fn`, `xref`
 -   Programming elements: `parmname`, `apiname`
 -   Typographic elements: `b`, `i`, `sup`, `sub`, `tt`, `u`
 -   Software elements: `filepath`, `msgph`, `userinput`, `systemoutput`, `cmdname`, `msgnum`, `varname`
@@ -126,6 +128,6 @@ The opening tag of a `<codeblock>` is indented normally, the text within a `<cod
 </codeblock>
 ```
 
-Other white-space sensitive elements (such as `<lines>` are supported in a similar manner. If processing is found to be
+Other white-space sensitive elements such as `<lines>` are supported in a similar manner. If processing is found to be
 incorrect due to embedded elements, it is suggested that the author uses the `pretty-ignore` directive to maintain
 whitespace.
