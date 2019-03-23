@@ -144,6 +144,7 @@ should not overrun the side of a typical view screen (approx 120 characters)
     -   [Installing the Plug-in](#installing-the-plug-in)
 -   [Usage](#usage)
     -   [Prettifying DITA files for a document](#prettifying-dita-files-for-a-document)
+    -   [Prettifying a single DITA file](#prettifying-a-single-dita-file)
     -   [Parameter Reference](#parameter-reference)
     -   [Ignoring DITA files](#ignoring-dita-files)
 -   [Formatting Rules](#formatting-rules)
@@ -195,13 +196,23 @@ Like any other transform, when invoked directly, the prettier requires an input 
 
 ### Prettifying DITA files for a document
 
-To prettify DITA files for a document, use the `pretty-dita` transform.
+To prettify DITA files for a document, use the `pretty-dita` transform,  set the `--input` parameter to point to a `*.ditamap` file:
 
 ```bash
 PATH_TO_DITA_OT/bin/dita -f pretty-dita -i document.ditamap
 ```
 
-The files will be updated in place.
+All `*.dita` and `*.ditamap` files under that directory will be updated in place.
+
+### Prettifying a single DITA file
+
+Alternatively, to prettify a single DITA file, set the `--input` parameter to point to a `*.dita` file:
+
+```bash
+PATH_TO_DITA_OT/bin/dita -f pretty-dita -i topic.dita
+```
+
+The specified file will be updated in place.
 
 ### Parameter Reference
 
@@ -277,7 +288,7 @@ The following elements frequently contain a large body of text within them. The 
 always placed on a separate line before displaying the text found within them:
 
 -   Topic elements: `abstract`, `shortdesc`
--   Body elements:  `p`,  `li`, `note`, `lq`
+-   Body elements: `p`,  `li`, `note`, `lq`
 
 #### Example
 

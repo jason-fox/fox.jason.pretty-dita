@@ -3,12 +3,14 @@
 	This file is part of the DITA-OT Pretty DITA Plug-in project.
 	See the accompanying LICENSE file for applicable licenses.
 -->
-<project  name="fox.jason.pretty-dita">
+<project name="fox.jason.pretty-dita" xmlns:if="ant:if" xmlns:unless="ant:unless">
 
-	<target name="pretty-dita">
-
-		
-		<fileset id="dist.contents" dir="${args.input.dir}" casesensitive="yes">
+	<!--
+		Runs the prettier over the specified files.
+	-->
+	<target name="pretty-dita">		
+		<fileset if:set="pretty-dita.single-file" id="dist.contents" file="${args.input}" />
+		<fileset unless:set="pretty-dita.single-file" id="dist.contents" dir="${args.input.dir}" casesensitive="yes">
   			<include name="**/*.dita"/>
   			<include name="**/*.ditamap"/>
 		</fileset>
@@ -16,9 +18,13 @@
 		<prettify-files dir="${args.input.dir}" toDir="${args.input.dir}" refid="dist.contents"/>
 	</target>
 
+	<!--
+		Sets up ANT variable defaults
+	-->
 	<target name="pretty-dita.init">
 		<typedef file="${dita.plugin.fox.jason.pretty-dita.dir}/resource/antlib.xml"/>
 
+		<!-- This defines the output file -->
 		<dita-ot-fail id="DOTA069F">
 			<condition>
 				<not>
@@ -29,7 +35,12 @@
 		</dita-ot-fail>
 		<dirname property="args.input.dir" file="${args.input}"/>
 
-		<!-- Set Default Values -->
+		<!-- The output file may be a single dita file -->
+		<condition property="pretty-dita.single-file">
+		  <matches pattern=".*\.dita$" string="${args.input}" /> 
+		</condition>
+
+		<!-- Set Default Values for parameters -->
 		<property name="args.indent" value="4"/>
 		<property name="args.style" value="spaces"/>
 		<property name="args.require-pragma" value="false"/>
@@ -39,7 +50,7 @@
 
 
 	<!--
-		Ant target executed to run a unit test suite.
+		Ant target executed to run the prettifier.
 	-->
 	<target depends="build-init,pretty-dita.init,pretty-dita" name="dita2pretty-dita"/>
 
