@@ -71,7 +71,7 @@ Prettify.analyseDITA = function(dita, style, printWidth, addPragma, hasPragma) {
 		if(closeClose === -1 ){
 		  	return space;
 		} 
-		return closeClose > (printWidth * 1.2) ? space:  text.indexOf(' ',text.indexOf('>', closeClose));
+		return closeClose > (Number(printWidth) + 20) ? space:  text.indexOf(' ',text.indexOf('>', closeClose));
 	}
 
 	var splitText = function(str, indent){
