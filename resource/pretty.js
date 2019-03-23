@@ -40,7 +40,7 @@ Prettify.writeDITA = function(file, dita){
 	task.perform();
 }
 
-Prettify.analyseDITA = function(dita, style) {
+Prettify.analyseDITA = function(dita, style, printWidth, addPragma, hasPragma) {
 
 	var codeblock= false;
 	var closeCodeblock = false;
@@ -58,9 +58,9 @@ Prettify.analyseDITA = function(dita, style) {
 
 
 	var splitAtSpace = function (text){
-		var space = text.lastIndexOf(' ', 80);
+		var space = text.lastIndexOf(' ', printWidth);
 		if(space < 1 ){
-			space = text.indexOf(' ', 80);
+			space = text.indexOf(' ', printWidth);
 		}  
 		if(space < 1 ){
 		  	return -1;
@@ -71,7 +71,7 @@ Prettify.analyseDITA = function(dita, style) {
 		if(closeClose === -1 ){
 		  	return space;
 		} 
-		return closeClose > 100 ? space:  text.indexOf(' ',text.indexOf('>', closeClose));
+		return closeClose > (printWidth * 1.2) ? space:  text.indexOf(' ',text.indexOf('>', closeClose));
 	}
 
 	var splitText = function(str, indent){
@@ -110,6 +110,10 @@ Prettify.analyseDITA = function(dita, style) {
 			}
 
 			text.push('<!DOCTYPE ' + doctype + ' ' +  Prettify.doctypes[doctype.toLowerCase()] + '>');
+			
+			if (addPragma === 'true' && hasPragma === 'false'){
+				text.push('<!-- @format -->');
+			}
 
 		}
 

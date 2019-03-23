@@ -205,8 +205,29 @@ The files will be updated in place.
 
 ### Parameter Reference
 
--   `args.pretty-dita.indent` - How many characters to indent (default `4`)
--   `args.pretty-dita.style` - Whether to indent using tabs or spaces (default `spaces`)
+-   `args.indent` - How many characters to indent (default `4`)
+-   `args.style` - Whether to indent using tabs or spaces (default `spaces`)
+-   `args.print-width` - Specify the line length that the printer will wrap on (default `80`)
+-   `args.require-pragma` - Restrict the plug-in to only format files that contain a special comment, called
+    a pragma, at the top of the file (default `false`)
+
+    This is very useful when gradually transitioning large, unformatted codebases to pretty-dita.
+
+    For example, a file containing the following comment will be formatted when `args.require-pragma`
+    is supplied:
+
+```xml
+<!-- @prettier -->
+```
+
+    or
+
+```xml
+<!-- @format -->
+```
+
+-   `args.insert-pragma` - Insert a special `@format` marker at the top of files specifying that the file
+    has been formatted with the plugin (default `false`)
 
 ### Ignoring DITA files
 
@@ -255,7 +276,8 @@ DITA element
 The following elements frequently contain a large body of text within them. The opening and closing tags are therefore
 always placed on a separate line before displaying the text found within them:
 
--   `abstract`, `p`, `shortdesc`, `li`, `note`, `lq`
+-   Topic elements: `abstract`, `shortdesc`
+-   Body elements:  `p`,  `li`, `note`, `lq`
 
 #### Example
 
@@ -285,11 +307,12 @@ always placed on a separate line before displaying the text found within them:
 The following elements are treated as inline elements, they do not warrant an additional line and are kept within the
 surrounding text
 
--   Body elements: `ph`,`codeph`,`synph`,`term`,`xref`,`cite`,`q`,`boolean`,`state`,`keyword`,`option`, `tm`,`fn`,`xref`
--   Programming elements: `parmname`,`apiname`
--   Typographic elements: `b`,`i`,`sup`,`sub`,`tt`,`u`
--   Software elements: `filepath`,`msgph`,`userinput`,`systemoutput`,`cmdname`,`msgnum`,`varname`
--   Userinteface elements: `uicontrol`,`menucascade`,`wintitle`
+-   Body elements: `ph`, `codeph`, `synph`, `term`, `xref`, `cite`, `q`, `boolean`, `state`, `keyword`, `option`, `tm`,
+    `fn`, `xref`
+-   Programming elements: `parmname`, `apiname`
+-   Typographic elements: `b`, `i`, `sup`, `sub`, `tt`, `u`
+-   Software elements: `filepath`, `msgph`, `userinput`, `systemoutput`, `cmdname`, `msgnum`, `varname`
+-   Userinteface elements: `uicontrol`, `menucascade`, `wintitle`
 -   XML Mention Domain: `numcharref`, `parameterentity`, `textentity`, `xmlatt`, `xmlelement`, `xmlnsname`, `xmlpi`
 
 #### Example

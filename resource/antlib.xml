@@ -61,10 +61,14 @@ for (i = 0; i < filesets.size(); ++i) {
 	-->
 	<scriptdef language="javascript" name="tidy-dita">
 		<attribute name="file"/>
+		<attribute name="pragma"/>
 <![CDATA[
 
 var pluginDir =  project.getProperty("dita.plugin.fox.jason.pretty-dita.dir");
-var indentStyle =  project.getProperty("args.pretty-dita.style") || 'spaces';
+var indentStyle =  project.getProperty("args.style") || 'spaces';
+var printWidth =  project.getProperty("args.print-width") || 80;
+var addPragma =  project.getProperty("args.insert-pragma") || false;
+var hasPragma =  attributes.get("pragma") || false;
 
 var file = attributes.get("file");
 var dir = attributes.get("dir");
@@ -74,7 +78,7 @@ eval('' + org.apache.tools.ant.util.FileUtils.readFully(
 
 var dita = org.apache.tools.ant.util.FileUtils.readFully(
 				new java.io.FileReader( file));
-var tidy = Prettify.analyseDITA(dita, indentStyle);
+var tidy = Prettify.analyseDITA(dita, indentStyle, printWidth, addPragma, hasPragma);
 Prettify.writeDITA(file, tidy);
 
 ]]>
@@ -127,18 +131,34 @@ Prettify.writeDITA(file, tidy);
 			<tempfile deleteonexit="true" destdir="${dita.temp.dir}" property="copy.file"/>
 
 			<local name="prettier.ignore"/>
+			<local name="prettier.hasPragma"/>
+
+			<condition property="prettier.hasPragma">
+				<or>
+					<resourcecontains resource="@{dir}/@{src}" substring="&lt;!-- @prettier"/>
+					<resourcecontains resource="@{dir}/@{src}" substring="&lt;!-- @format"/>
+				</or>
+			</condition>
+			<property name="prettier.hasPragma" value="false"/>
+
 			<condition property="prettier.ignore">
-				<resourcecontains resource="@{dir}/@{src}" substring="&lt;!-- prettier-ignore"/>
+				<or>
+					<resourcecontains resource="@{dir}/@{src}" substring="&lt;!-- prettier-ignore"/>
+					<and>
+						<istrue value="${args.require-pragma}"/>
+						<isfalse value="${prettier.hasPragma}"/>
+					</and>
+				</or>
 			</condition>
 
 
 			<xslt unless:set="prettier.ignore" force="true" in="@{dir}/@{src}" out="${copy.file}" style="${dita.plugin.fox.jason.pretty-dita.dir}/xsl/dita2pretty-dita.xsl">
 				<xmlcatalog refid="fake.dita.catalog"/>
-				<param if="args.pretty-dita.indent"  expression="${args.pretty-dita.indent}" name="INDENT" type="INT"/>
-				<param if="args.pretty-dita.style"  expression="${args.pretty-dita.style}" name="STYLE"/>
+				<param if="args.indent"  expression="${args.indent}" name="INDENT" type="INT"/>
+				<param if="args.style"  expression="${args.style}" name="STYLE"/>
 			</xslt>
 
-			<tidy-dita unless:set="prettier.ignore" file="${copy.file}"/>
+			<tidy-dita unless:set="prettier.ignore" file="${copy.file}" pragma="${prettier.hasPragma}"/>
 			<copy unless:set="prettier.ignore" file="${copy.file}" tofile="@{toDir}/@{src}"/>
 
 		</sequential>

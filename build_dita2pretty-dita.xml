@@ -29,8 +29,12 @@
 		</dita-ot-fail>
 		<dirname property="args.input.dir" file="${args.input}"/>
 
-		<property name="args.pretty-dita.indent" value="4"/>
-		<property name="args.pretty-dita.style" value="spaces"/>
+		<!-- Set Default Values -->
+		<property name="args.indent" value="4"/>
+		<property name="args.style" value="spaces"/>
+		<property name="args.require-pragma" value="false"/>
+		<property name="args.insert-pragma" value="false"/>
+		<property name="args.print-width" value="80"/>
 	</target>
 
 
