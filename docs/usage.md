@@ -33,13 +33,12 @@ The specified file will be updated in place.
     This is very useful when gradually transitioning large, unformatted codebases to pretty-dita.
 
     For example, a file containing the following comment will be formatted when `args.require-pragma`
-    is supplied:
+    is supplied if either of the following are present:
 
 ```xml
 <!-- @prettier -->
 ```
-
-    or
+<span/>
 
 ```xml
 <!-- @format -->
