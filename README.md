@@ -224,14 +224,12 @@ The specified file will be updated in place.
 
     This is very useful when gradually transitioning large, unformatted codebases to pretty-dita.
 
-    For example, a file containing the following comment will be formatted when `args.require-pragma`
+    For example, a file containing either of the following comments will be formatted when `args.require-pragma`
     is supplied:
 
 ```xml
 <!-- @prettier -->
 ```
-
-    or
 
 ```xml
 <!-- @format -->
