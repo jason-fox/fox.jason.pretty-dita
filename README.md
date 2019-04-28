@@ -198,7 +198,7 @@ Like any other transform, when invoked directly, the prettier requires an input 
 
 To prettify DITA files for a document, use the `pretty-dita` transform,  set the `--input` parameter to point to a `*.ditamap` file:
 
-```bash
+```console
 PATH_TO_DITA_OT/bin/dita -f pretty-dita -i document.ditamap
 ```
 
@@ -208,7 +208,7 @@ All `*.dita` and `*.ditamap` files under that directory will be updated in place
 
 Alternatively, to prettify a single DITA file, set the `--input` parameter to point to a `*.dita` file:
 
-```bash
+```console
 PATH_TO_DITA_OT/bin/dita -f pretty-dita -i topic.dita
 ```
 
