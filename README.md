@@ -1,4 +1,4 @@
-# Pretty DITA for DITA-OT
+# Pretty DITA for DITA-OT [<img src="https://jason-fox.github.io/fox.jason.pretty-dita/pretty-dita.png" align="right" width="300">](https://pretty-dita-ot.rtfd.io/)
 
 [![license](https://img.shields.io/github/license/jason-fox/fox.jason.pretty-dita.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 [![DITA-OT 3.3](https://img.shields.io/badge/DITA--OT-3.3-blue.svg)](http://www.dita-ot.org/3.3/) <br/>
