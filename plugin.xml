@@ -39,9 +39,11 @@
 			desc="Specify the line length that the printer will wrap on (default 80)" />
 	</transtype>
 
-	<!-- Import the overrides transform's ANT file -->
+	<!-- Import the pretty-dita transform's ANT file -->
 	<feature extension="ant.import" file="build_dita2pretty-dita.xml"/>
 	<!-- Ensure the plugin's error and logging messages are available -->
 	<feature extension="dita.xsl.messages" file="resource/messages.xml"/>
+	<!-- Add a template file to enable overrides to use extension points -->
+	<template file="build_dita2pretty-dita_template.xml"/>
 
 </plugin>
