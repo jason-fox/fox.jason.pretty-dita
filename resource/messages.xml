@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  This file is part of the DITA-OT Pretty DITA Plug-in project.
+  See the accompanying LICENSE file for applicable licenses.
+-->
+<messages xmlns:dita="http://dita-ot.sourceforge.net">
+  <message id="PRTY001I" type="INFO">
+    <reason>%1</reason>
+    <response/>
+  </message>
+</messages>

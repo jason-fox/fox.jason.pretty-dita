@@ -16,12 +16,17 @@
 		</fileset>
 
 		<prettify-files dir="${args.input.dir}" toDir="${args.input.dir}" refid="dist.contents"/>
+		<pretty-dita-success-echo/>
 	</target>
 
 	<!--
 		Sets up ANT variable defaults
 	-->
 	<target name="pretty-dita.init">
+		<dita-ot-echo id="PRTY001I">
+			<param name="1" value="Prettifying DITA files."/>
+		</dita-ot-echo>
+
 		<typedef file="${dita.plugin.fox.jason.pretty-dita.dir}/resource/antlib.xml"/>
 
 		<!-- This defines the output file -->
