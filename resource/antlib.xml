@@ -13,40 +13,12 @@
 		@param macro - A macro to run.
 		@param fileset - A set of files
 	-->
-	<scriptdef language="javascript" name="iterate">
+	<scriptdef language="javascript" name="iterate"
+		src="${dita.plugin.fox.jason.pretty-dita.dir}/resource/iterate-fileset.js">
 		<attribute name="toDir"/>
 		<attribute name="dir"/>
 		<attribute name="macro"/>
 		<element name="fileset" type="fileset"/>
-<![CDATA[
-
-
-var dir = attributes.get("dir");
-var toDir = attributes.get("todir");
-var filesets = elements.get("fileset");
-var macro = attributes.get("macro");
-
-for (i = 0; i < filesets.size(); ++i) {
-    fileset = filesets.get(i);
-    scanner = fileset.getDirectoryScanner(project);
-    scanner.scan();
-    files = scanner.getIncludedFiles();
-    for( j=0; j < files.length; j++) {
-		task = project.createTask(macro);
-		if (files[i] !== "") {
-	        try {
-	        	task.setDynamicAttribute("src", files[j]);
-	        	task.setDynamicAttribute("dir", dir);
-	        	task.setDynamicAttribute("toDir", toDir);
-	            task.execute();
-	        } catch(err) {
-	            task.log( "Execution error: " + err.message );
-	        }
-		}
-	}
-}
-
-]]>
 	</scriptdef>
 
 	<!--
@@ -56,29 +28,9 @@ for (i = 0; i < filesets.size(); ++i) {
 		@param file    - The DITA file to clean up
 		@param pragma  - Whether to add a pragma statement if it is missing 
 	-->
-	<scriptdef language="javascript" name="tidy-whitespace">
+	<scriptdef language="javascript" name="tidy-whitespace" src="${dita.plugin.fox.jason.pretty-dita.dir}/resource/pretty-dita.js">
 		<attribute name="file"/>
 		<attribute name="pragma"/>
-<![CDATA[
-
-var pluginDir =  project.getProperty("dita.plugin.fox.jason.pretty-dita.dir");
-var indentStyle =  project.getProperty("args.style") || 'spaces';
-var printWidth =  project.getProperty("args.print-width") || 80;
-var addPragma =  project.getProperty("args.insert-pragma") || false;
-var hasPragma =  attributes.get("pragma") || false;
-
-var file = attributes.get("file");
-var dir = attributes.get("dir");
-
-eval('' + org.apache.tools.ant.util.FileUtils.readFully(
-      new java.io.FileReader(pluginDir + '/resource/pretty.js' ) ) );
-
-var dita = org.apache.tools.ant.util.FileUtils.readFully(
-				new java.io.FileReader( file));
-var tidy = Prettify.analyseDITA(dita, indentStyle, printWidth, addPragma, hasPragma);
-Prettify.writeDITA(file, tidy);
-
-]]>
 	</scriptdef>
 
 	<!--
@@ -160,22 +112,10 @@ Prettify.writeDITA(file, tidy);
 		</sequential>
 	</macrodef>
 
-	<scriptdef language="javascript" name="pretty-dita-success-echo">
-<![CDATA[
-	var escape = String.fromCharCode(27);
-	var colorize = "true".equals(project.getProperty("cli.color"));
-	var input = "[SUCCESS] DITA files have been formatted";
-	var ansiColor = "[32m";
-
-	if (colorize) {
-		input =  escape + ansiColor + input;
-		input += escape + "[0m";
-	}
-
-	project.log("", 1);
-	project.log(input, 1);
-]]>			
-	</scriptdef>
+	<!--
+		Output a colorized success message.
+	-->
+	<scriptdef language="javascript" name="pretty-dita-success-echo" src="${dita.plugin.fox.jason.pretty-dita.dir}/resource/success-echo.js"/>
 
 
 </antlib>
