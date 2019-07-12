@@ -11,8 +11,8 @@
 	<target name="pretty-dita">		
 		<fileset if:set="pretty-dita.single-file" id="dist.contents" file="${args.input}" />
 		<fileset unless:set="pretty-dita.single-file" id="dist.contents" dir="${args.input.dir}" casesensitive="yes">
-  			<include name="**/*.dita"/>
-  			<include name="**/*.ditamap"/>
+			<include name="**/*.dita"/>
+			<include name="**/*.ditamap"/>
 		</fileset>
 
 		<prettify-files dir="${args.input.dir}" toDir="${args.input.dir}" refid="dist.contents"/>
