@@ -1,8 +1,8 @@
-language: java
+sudo: required
 jdk:
-  - oraclejdk8
+  - openjdk8
 env:
-  - DITA_OT=3.3
+  - DITA_OT=3.3.2
 
 install:
   - zip -r fox.jason.pretty-dita.zip . -x *.zip* *.git/* *temp/* *out/*
