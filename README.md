@@ -137,7 +137,8 @@ should not overrun the side of a typical view screen (approx 120 characters)
 </topic>
 ```
 
-# Table of Contents
+<details>
+<summary><strong>Table of Contents</strong></summary>
 
 -   [Install](#install)
     -   [Installing DITA-OT](#installing-dita-ot)
@@ -156,12 +157,14 @@ should not overrun the side of a typical view screen (approx 120 characters)
 -   [Contribute](#contribute)
 -   [License](#license)
 
-# Install
+</details>
+
+## Install
 
 The Pretty DITA for DITA-OT has been tested against [DITA-OT 3.x](http://www.dita-ot.org/download). It is recommended
 that you upgrade to the latest version.
 
-## Installing DITA-OT
+### Installing DITA-OT
 
 <a href="https://www.dita-ot.org"><img src="https://www.dita-ot.org/images/dita-ot-logo.svg" align="right" height="55"></a>
 
@@ -182,7 +185,7 @@ unzip -q dita-ot-3.3.4.zip
 rm dita-ot-3.3.4.zip
 ```
 
-## Installing the Plug-in
+### Installing the Plug-in
 
 -   Run the plug-in installation command:
 
@@ -192,7 +195,7 @@ dita -install https://github.com/jason-fox/fox.jason.pretty-dita/archive/master.
 
 The `dita` command line tool requires no additional configuration.
 
-# Usage
+## Usage
 
 Like any other transform, when invoked directly, the prettier requires an input document
 
@@ -261,7 +264,7 @@ This file really doesn't need formatting
 </topic>
 ```
 
-# Formatting Rules
+## Formatting Rules
 
 The pretty-dita DITA-OT Plug-in is an **opinionated** code formatter, DITA files are formatted to according to a
 well-defined set of rules.
@@ -395,10 +398,10 @@ Other white-space sensitive elements such as `<lines>` are supported in a simila
 incorrect due to embedded elements, it is suggested that the author uses the `pretty-ignore` directive to maintain
 whitespace.
 
-# Contribute
+## Contribute
 
 PRs accepted.
 
-# License
+## License
 
 [Apache 2.0](LICENSE) © 2019 Jason Fox
