@@ -6,7 +6,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/jason-fox/fox.jason.pretty-dita/badge.svg?branch=master)](https://coveralls.io/github/jason-fox/fox.jason.pretty-dita?branch=master)
 [![Documentation Status](https://readthedocs.org/projects/pretty-dita-ot/badge/?version=latest)](https://pretty-dita-ot.readthedocs.io/en/latest/?badge=latest)
 
-This is a DITA prettifier DITA-OT Plug-in which formats DITA XML in an aesthetically pleasing manner. `<topic>`
+This is a DITA prettifier [DITA-OT Plug-in](https://www.dita-ot.org/plugins) which formats DITA XML in an aesthetically pleasing manner. `<topic>`
 elements, `<section>` elements, `<p>` elements etc are regularly indented so the raw DITA XML files can be scanned by
 humans:
 
@@ -168,9 +168,9 @@ that you upgrade to the latest version.
 The Pretty DITA for DITA-OT is a plug-in for the DITA Open Toolkit.
 
 -   Full installation instructions for downloading DITA-OT can be found
-    [here](https://www.dita-ot.org/3.2/topics/installing-client.html).
+    [here](https://www.dita-ot.org/3.3/topics/installing-client.html).
 
-    1.  Download the `dita-ot-3.3.zip` package from the project website at
+    1.  Download the `dita-ot-3.3.4.zip` package from the project website at
         [dita-ot.org/download](https://www.dita-ot.org/download)
     2.  Extract the contents of the package to the directory where you want to install DITA-OT.
     3.  **Optional**: Add the absolute path for the `bin` directory to the _PATH_ system variable. This defines the
