@@ -54,7 +54,7 @@ var doctypes = {
 };
 
 // Analyse the dita and prettify it.
-function prettifyDita(dita, style, printWidth, addPragma, hasPragma) {
+function prettifyDita(style) {
   var codeblock = false;
   var closeCodeblock = false;
 
@@ -181,7 +181,7 @@ function prettifyDita(dita, style, printWidth, addPragma, hasPragma) {
 var dita = org.apache.tools.ant.util.FileUtils.readFully(
   new java.io.FileReader(file)
 );
-var tidy = prettifyDita(dita, indentStyle, printWidth, addPragma, hasPragma);
+var tidy = prettifyDita(indentStyle);
 var task = project.createTask("echo");
 task.setFile(new java.io.File(file));
 task.setMessage(tidy);

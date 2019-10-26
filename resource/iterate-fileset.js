@@ -16,13 +16,13 @@ var toDir = attributes.get("todir");
 var filesets = elements.get("fileset");
 var macro = attributes.get("macro");
 
-for (i = 0; i < filesets.size(); ++i) {
-  fileset = filesets.get(i);
-  scanner = fileset.getDirectoryScanner(project);
+for (var i = 0; i < filesets.size(); ++i) {
+  var fileset = filesets.get(i);
+  var scanner = fileset.getDirectoryScanner(project);
   scanner.scan();
-  files = scanner.getIncludedFiles();
-  for (j = 0; j < files.length; j++) {
-    task = project.createTask(macro);
+  var files = scanner.getIncludedFiles();
+  for (var j = 0; j < files.length; j++) {
+    var task = project.createTask(macro);
     if (files[i] !== "") {
       try {
         task.setDynamicAttribute("src", files[j]);
