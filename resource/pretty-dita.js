@@ -11,7 +11,7 @@
 //    @param pragma  - Whether to add a pragma statement if it is missing
 //
 
-var indentStyle = project.getProperty("args.style") || "spaces";
+var indentUsing = project.getProperty("args.style") || "spaces";
 var printWidth = project.getProperty("args.print-width") || 80;
 var addPragma = project.getProperty("args.insert-pragma") || false;
 var hasPragma = attributes.get("pragma") || false;
@@ -59,8 +59,8 @@ function prettifyDita(style) {
   var closeCodeblock = false;
 
   var lines = dita.split("\n");
-  var text = [];
-  var str = [];
+  var textArr = [];
+  var strArr = [];
   var doctype = null;
   var blockEl = false;
   var indent = 0;
@@ -130,12 +130,12 @@ function prettifyDita(style) {
         doctype = doctype.substring(0, doctype.indexOf(" "));
       }
 
-      text.push(
+      textArr.push(
         "<!DOCTYPE " + doctype + " " + doctypes[doctype.toLowerCase()] + ">"
       );
 
       if (addPragma === "true" && hasPragma === "false") {
-        text.push("<!-- @format -->");
+        textArr.push("<!-- @format -->");
       }
     }
 
@@ -150,38 +150,38 @@ function prettifyDita(style) {
     }
 
     if (closeCodeblock) {
-      text.push(lines[i]);
+      textArr.push(lines[i]);
       closeCodeblock = false;
     } else if (codeblock) {
-      text.push(lines[i]);
+      textArr.push(lines[i]);
     } else {
       // If this is a block element, format the text
       blockEl =
         lines[i].match(/^\s*<.*>$/) && (lines[i] + " ").split("<").length < 4;
 
       if (blockEl) {
-        if (str.length > 0) {
-          text.push(splitText(str, indent + 2));
+        if (strArr.length > 0) {
+          textArr.push(splitText(strArr, indent + 2));
         }
-        text.push(lines[i]);
+        textArr.push(lines[i]);
 
         indent = lines[i].indexOf("<");
-        str = [];
+        strArr = [];
       } else {
         var line = lines[i].trim();
         if (line.length > 0) {
-          str.push(line);
+          strArr.push(line);
         }
       }
     }
   }
-  return text.join("\n");
+  return textArr.join("\n");
 }
 
 var dita = org.apache.tools.ant.util.FileUtils.readFully(
   new java.io.FileReader(file)
 );
-var tidy = prettifyDita(indentStyle);
+var tidy = prettifyDita(indentUsing);
 var task = project.createTask("echo");
 task.setFile(new java.io.File(file));
 task.setMessage(tidy);
