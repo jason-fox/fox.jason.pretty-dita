@@ -5,6 +5,7 @@
 [![Build Status](https://travis-ci.org/jason-fox/fox.jason.pretty-dita.svg?branch=master)](https://travis-ci.org/jason-fox/fox.jason.pretty-dita)
 [![Coverage Status](https://coveralls.io/repos/github/jason-fox/fox.jason.pretty-dita/badge.svg?branch=master)](https://coveralls.io/github/jason-fox/fox.jason.pretty-dita?branch=master)
 [![Documentation Status](https://readthedocs.org/projects/pretty-dita-ot/badge/?version=latest)](https://pretty-dita-ot.readthedocs.io/en/latest/?badge=latest)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=fox.jason.pretty-dita&metric=alert_status)](https://sonarcloud.io/dashboard?id=fox.jason.pretty-dita)
 
 This is a DITA prettifier [DITA-OT Plug-in](https://www.dita-ot.org/plugins) which formats DITA XML in an aesthetically pleasing manner. `<topic>`
 elements, `<section>` elements, `<p>` elements etc are regularly indented so the raw DITA XML files can be scanned by
