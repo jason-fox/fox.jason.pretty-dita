@@ -94,14 +94,14 @@ function prettifyDita(style) {
 
   // For a text element which should run over multiple
   // lines, expand and indent the text
-  var splitText = function(str, indent) {
+  var splitText = function(str, indentSize) {
     var text = str.join(" ");
     var split = 0;
     var arr = [];
-    var spaces = new Array(indent).join(indentStyle);
+    var spaces = new Array(indentSize).join(indentStyle);
 
     while (split > -1) {
-      var split = splitAtSpace(text);
+      split = splitAtSpace(text);
 
       if (split !== -1) {
         arr.push(text.substring(0, split));
