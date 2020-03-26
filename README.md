@@ -138,6 +138,10 @@ should not overrun the side of a typical view screen (approx 120 characters)
 </topic>
 ```
 
+:arrow_forward: [Video from DITA-OT Day 2019](https://youtu.be/vobY_ha5nd0)
+
+[![](https://jason-fox.github.io/fox.jason.pretty-dita/javascript-video.png)](https://youtu.be/vobY_ha5nd0)
+
 <details>
 <summary><strong>Table of Contents</strong></summary>
 
