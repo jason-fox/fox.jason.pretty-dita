@@ -143,6 +143,12 @@ function prettifyDita(style) {
     if (lines[i].match(reStart) && lines[i].match(reEnd)) {
       // Nothing
     } else if (lines[i].match(reStart)) {
+      // Print out any text found before the codeblock.
+      if (strArr.length > 0) {
+          textArr.push(splitText(strArr, indent + 2));
+      }
+      strArr = [];
+      indent = lines[i].indexOf("<");
       codeblock = true;
     } else if (lines[i].match(reEnd)) {
       closeCodeblock = true;
@@ -160,6 +166,7 @@ function prettifyDita(style) {
         lines[i].match(/^\s*<.*>$/) && (lines[i] + " ").split("<").length < 4;
 
       if (blockEl) {
+        // Print out any text found within the paragraph
         if (strArr.length > 0) {
           textArr.push(splitText(strArr, indent + 2));
         }
