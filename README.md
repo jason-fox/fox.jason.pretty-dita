@@ -212,7 +212,17 @@ To prettify DITA files for a document, use the `pretty-dita` transform,  set the
 PATH_TO_DITA_OT/bin/dita -f pretty-dita -i document.ditamap
 ```
 
-All `*.dita` and `*.ditamap` files under that directory will be updated in place.
+All `*.dita` and `*.ditamap` files **under that directory** will be updated in place.
+
+### Prettifying DITA files under a directory
+
+To prettify DITA files within a directory, use the `pretty-dita` transform,  set the `--input` parameter to point to the directory :
+
+```console
+PATH_TO_DITA_OT/bin/dita -f pretty-dita -i /path-to-directory
+```
+
+All `*.dita` and `*.ditamap` files **under that directory** will be updated in place.
 
 ### Prettifying a single DITA file
 
