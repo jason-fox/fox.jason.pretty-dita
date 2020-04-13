@@ -145,7 +145,7 @@ function prettifyDita(style) {
     } else if (lines[i].match(reStart)) {
       // Print out any text found before the codeblock.
       if (strArr.length > 0) {
-          textArr.push(splitText(strArr, indent + 2));
+        textArr.push(splitText(strArr, indent + 2));
       }
       strArr = [];
       indent = lines[i].indexOf("<");
