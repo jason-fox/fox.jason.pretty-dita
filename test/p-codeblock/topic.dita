@@ -3,33 +3,33 @@
 <concept id="concept_g4t_tdy_flb">
     <title>Code block moving bug</title>
     <shortdesc>
-      Code block moving bug
+       Code block moving bug
     </shortdesc>
     <conbody>
         <p>
-          para
+           para
         </p>
         <p>
-          Looks like this:
+           Looks like this:
             <codeblock>&lt;logic  &gt;
 &lt;/logic&gt;</codeblock>
         </p>
         <p>
-          looks like this:
+           looks like this:
             <codeblock>&lt;logic type="SpeedLogicBL3" id="speedLogicBL3"&gt;
 &lt;/logic&gt;</codeblock> 
-              text
+               text
         </p>
         <p>
-          and looks like this:
+           and looks like this:
             <codeblock>&lt;logic type="SpeedLogicLZB" id="speedLogicLZB"&gt;
 &lt;/logic&gt;</codeblock>
             <note>
-              Values are:
+               Values are:
                 <codeblock>speedWidgetBL3
 ...
 </codeblock>
-                  more text
+                   more text
             </note>
         </p>
     </conbody>

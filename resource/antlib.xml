@@ -13,13 +13,11 @@
 		@param macro - A macro to run.
 		@param fileset - A set of files
 	-->
-	<scriptdef language="javascript" name="iterate"
-		src="${dita.plugin.fox.jason.pretty-dita.dir}/resource/iterate-fileset.js">
-		<attribute name="toDir"/>
-		<attribute name="dir"/>
-		<attribute name="macro"/>
-		<element name="fileset" type="fileset"/>
-	</scriptdef>
+	<taskdef classname="fox.jason.prettydita.tasks.IterateFilesetTask" name="iterate" >
+		<classpath>
+			<pathelement location="${prettydita.jar}"/>
+		</classpath>
+	</taskdef>
 
 	<!--
 		Entry point to the JavaScript tidier function which  standardizes
@@ -28,10 +26,20 @@
 		@param file    - The DITA file to clean up
 		@param pragma  - Whether to add a pragma statement if it is missing 
 	-->
-	<scriptdef language="javascript" name="tidy-whitespace" src="${dita.plugin.fox.jason.pretty-dita.dir}/resource/pretty-dita.js">
-		<attribute name="file"/>
-		<attribute name="pragma"/>
-	</scriptdef>
+	<taskdef classname="fox.jason.prettydita.tasks.PrettyDitaTask" name="tidy-whitespace" >
+		<classpath>
+			<pathelement location="${prettydita.jar}"/>
+		</classpath>
+	</taskdef>
+
+	<!--
+		Output a colorized success message.
+	-->
+	<taskdef classname="fox.jason.prettydita.tasks.SuccessEchoTask" name="pretty-dita-success-echo" >
+		<classpath>
+			<pathelement location="${prettydita.jar}"/>
+		</classpath>
+	</taskdef>
 
 	<!--
 		Prettify an directory containing DITA files
@@ -128,11 +136,5 @@
 
 		</sequential>
 	</macrodef>
-
-	<!--
-		Output a colorized success message.
-	-->
-	<scriptdef language="javascript" name="pretty-dita-success-echo" src="${dita.plugin.fox.jason.pretty-dita.dir}/resource/success-echo.js"/>
-
 
 </antlib>

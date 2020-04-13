@@ -25,6 +25,7 @@
 			<param name="1" value="Prettifying DITA files."/>
 		</dita-ot-echo>
 
+		<property name="passthrough.swagger.jar" value="${dita.plugin.fox.jason.pretty-dita.dir}/lib/prettydita-1.0.jar"/>
 		<typedef file="${dita.plugin.fox.jason.pretty-dita.dir}/resource/antlib.xml"/>
 
 		<!-- This defines the output file -->
@@ -55,6 +56,6 @@
 	<!--
 		Ant target executed to run the prettifier.
 	-->
-	<target name="dita2pretty-dita" description="Prettify the DITA files for a given document" depends="build-init,pretty-dita.init,passthrough,prismjs,pretty-dita"/>
+	<target name="dita2pretty-dita" description="Prettify the DITA files for a given document" depends="cats.splash,build-init,pretty-dita.init,passthrough,prismjs,pretty-dita"/>
 
 </project>

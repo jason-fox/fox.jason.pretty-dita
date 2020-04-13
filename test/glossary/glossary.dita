@@ -5,10 +5,10 @@
     <glossdef>A small portable drive.</glossdef>
     <glossBody>
         <glossPartOfSpeech value="noun"/>
-          <glossUsage>Do not provide in upper case (as in "USB Flash Drive") because that suggests a trademark.</glossUsage>
+           <glossUsage>Do not provide in upper case (as in "USB Flash Drive") because that suggests a trademark.</glossUsage>
         <glossAlt>
             <glossAcronym>UFD</glossAcronym>
-              <glossUsage>Explain the acronym on first occurrence.</glossUsage>
+               <glossUsage>Explain the acronym on first occurrence.</glossUsage>
         </glossAlt>
         <glossAlt id="memoryStick">
             <glossSynonym>memory stick</glossSynonym>
