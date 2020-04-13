@@ -224,7 +224,7 @@ public class PrettyDitaTask extends Task {
     }
     return closeClose > this.printWidth + 20
       ? space
-      : text.indexOf(' ', text.indexOf(">", closeClose));
+      : text.indexOf(' ', text.indexOf('>', closeClose));
   }
 
   // Analyse the dita and prettify it.
@@ -338,9 +338,6 @@ public class PrettyDitaTask extends Task {
       task.perform();
     } catch (IOException e) {
       throw new BuildException("Unable to read file", e);
-    } catch (Exception e) {
-      e.printStackTrace();
-      throw e;
     }
   }
 }
