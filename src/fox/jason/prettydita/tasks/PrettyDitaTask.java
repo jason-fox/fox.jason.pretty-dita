@@ -75,6 +75,18 @@ public class PrettyDitaTask extends Task {
     this.file = file;
   }
 
+  private void addDoctype(String doctype, List<String> textArr){
+    if (doctype.contains(" ")) {
+      doctype = doctype.substring(0, doctype.indexOf(' '));
+    }
+
+    textArr.add("<!DOCTYPE " + doctype + " " + getDoctype(doctype) + ">");
+
+    if (this.addPragma && (!this.hasPragma)) {
+      textArr.add("<!-- @format -->");
+    }
+  }
+
   // Standard Doctype replacements
   private String getDoctype(String doctype) {
     String type = null;
@@ -161,6 +173,8 @@ public class PrettyDitaTask extends Task {
       case "ditaval":
         type = "PUBLIC \"-//OASIS//DTD DITA DITAVAL//EN\" \"ditaval.dtd\"";
         break;
+      default:
+        getProject().log("Unknown Doctype: " + doctype, 1); 
     }
     return type;
   }
@@ -195,9 +209,9 @@ public class PrettyDitaTask extends Task {
   // but don't break up  inline tags unless absolutely
   // necessary.
   private int splitAtSpace(String text) {
-    int space = text.lastIndexOf(" ", this.printWidth);
+    int space = text.lastIndexOf(' ', this.printWidth);
     if (space < 1) {
-      space = text.indexOf(" ", this.printWidth);
+      space = text.indexOf(' ', this.printWidth);
     }
     if (space < 1) {
       return -1;
@@ -210,14 +224,12 @@ public class PrettyDitaTask extends Task {
     }
     return closeClose > this.printWidth + 20
       ? space
-      : text.indexOf(" ", text.indexOf(">", closeClose));
+      : text.indexOf(' ', text.indexOf(">", closeClose));
   }
 
   // Analyse the dita and prettify it.
   private String prettifyDita(String dita) {
-    boolean codeblock = false;
-    boolean closeCodeblock = false;
-
+    boolean withinCodeblock = false;
     String[] lines = dita.split("\n");
     List<String> textArr = new ArrayList<>();
     List<String> strArr = new ArrayList<>();
@@ -237,62 +249,53 @@ public class PrettyDitaTask extends Task {
     for (String line : lines) {
       // For the first line re-insert the doctype
       if (doctype == null && reDoctype.matcher(line).lookingAt()) {
-        doctype = line.substring(line.indexOf("<") + 1, line.indexOf(">"));
-
-        if (doctype.contains(" ")) {
-          doctype = doctype.substring(0, doctype.indexOf(" "));
-        }
-
-        textArr.add("<!DOCTYPE " + doctype + " " + getDoctype(doctype) + ">");
-
-        if ("true".equals(addPragma) && (this.hasPragma == false)) {
-          textArr.add("<!-- @format -->");
-        }
+        doctype = line.substring(line.indexOf('<') + 1, line.indexOf('>'));
+        addDoctype(doctype, textArr);
       }
 
-      // Check to see if the current element is whitespace sensitive
-      if (reStart.matcher(line).lookingAt() && reEnd.matcher(line).lookingAt()) {
-        // Nothing
-      } else if (reStart.matcher(line).lookingAt()) {
+      boolean startCodeblock = reStart.matcher(line).lookingAt();
+      boolean endCodeblock = reEnd.matcher(line).lookingAt();
+
+      if (startCodeblock && !endCodeblock) {
         // Print out any text found before the codeblock.
         if (!strArr.isEmpty()) {
           textArr.add(splitText(strArr, indent + 2));
         }
         strArr.clear();
-        indent = line.indexOf("<");
-        codeblock = true;
-
-      } else if (reEnd.matcher(line).lookingAt()) {
-        closeCodeblock = true;
-        codeblock = false;
+        indent = line.indexOf('<');
+        withinCodeblock = true;
       }
 
-      if (closeCodeblock) {
+      if (endCodeblock && !startCodeblock) {
+        withinCodeblock = false;
         textArr.add(line);
-        closeCodeblock = false;
-      } else if (codeblock) {
+        continue;
+      }
+
+      if (withinCodeblock) {
         textArr.add(line);
+        continue;
+      } 
+      // If this is a block element, format the text
+      blockEl =
+        reBlock.matcher(line).lookingAt() && (line + " ").split("<").length < 4;
+
+      if (blockEl) {
+        // Print out any text found within the paragraph
+        if (!strArr.isEmpty()) {
+          textArr.add(splitText(strArr, indent + 2));
+        }
+        textArr.add(line);
+
+        indent = line.indexOf('<');
+        strArr.clear();
       } else {
-        // If this is a block element, format the text
-        blockEl =
-          reBlock.matcher(line).lookingAt() && (line + " ").split("<").length < 4;
-
-        if (blockEl) {
-          // Print out any text found within the paragraph
-          if (!strArr.isEmpty()) {
-            textArr.add(splitText(strArr, indent + 2));
-          }
-          textArr.add(line);
-
-          indent = line.indexOf("<");
-          strArr.clear();
-        } else {
-          String currentLine = line.trim();
-          if (currentLine.length() > 0) {
-            strArr.add(currentLine);
-          }
+        String currentLine = line.trim();
+        if (currentLine.length() > 0) {
+          strArr.add(currentLine);
         }
       }
+      
     }
     return String.join("\n", textArr);
   }
@@ -325,7 +328,7 @@ public class PrettyDitaTask extends Task {
     this.indentStyle = ("tabs".equals(indentUsing)) ? '\t' : ' ';
 
     try {
-      String dita = org.apache.tools.ant.util.FileUtils.readFully(
+      String dita = FileUtils.readFully(
         new java.io.FileReader(file)
       );
       String tidy = prettifyDita(dita);
