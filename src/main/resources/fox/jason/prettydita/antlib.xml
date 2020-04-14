@@ -13,7 +13,7 @@
 		@param macro - A macro to run.
 		@param fileset - A set of files
 	-->
-	<taskdef classname="fox.jason.prettydita.tasks.IterateFilesetTask" name="iterate"/>
+	<taskdef classname="fox.jason.prettydita.tasks.IterateFilesetTask" name="iterate" onerror="ignore"/>
 
 	<!--
 		Entry point to the JavaScript tidier function which  standardizes
@@ -22,12 +22,12 @@
 		@param file    - The DITA file to clean up
 		@param pragma  - Whether to add a pragma statement if it is missing 
 	-->
-	<taskdef classname="fox.jason.prettydita.tasks.PrettyDitaTask" name="tidy-whitespace"/>
+	<taskdef classname="fox.jason.prettydita.tasks.PrettyDitaTask" name="tidy-whitespace" onerror="ignore"/>
 
 	<!--
 		Output a colorized success message.
 	-->
-	<taskdef classname="fox.jason.prettydita.tasks.SuccessEchoTask" name="pretty-dita-success-echo"/>
+	<taskdef classname="fox.jason.prettydita.tasks.SuccessEchoTask" name="pretty-dita-success-echo" onerror="ignore"/>
 
 	<!--
 		Prettify an directory containing DITA files

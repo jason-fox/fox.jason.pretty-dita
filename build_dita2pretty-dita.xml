@@ -25,7 +25,7 @@
 			<param name="1" value="Prettifying DITA files."/>
 		</dita-ot-echo>
 
-		<typedef file="${dita.plugin.fox.jason.pretty-dita.dir}/resource/antlib.xml"/>
+		<taskdef resource="fox/jason/prettydita/antlib.xml"/>
 
 		<!-- This defines the output file -->
 		<dita-ot-fail id="DOTA069F">
