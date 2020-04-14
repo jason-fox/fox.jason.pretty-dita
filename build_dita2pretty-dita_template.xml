@@ -27,7 +27,7 @@
 			<param name="1" value="Prettifying DITA files."/>
 		</dita-ot-echo>
 
-		<property name="passthrough.swagger.jar" value="${dita.plugin.fox.jason.pretty-dita.dir}/lib/prettydita-1.0.jar"/>
+		<property name="prettydita.jar" value="${dita.plugin.fox.jason.pretty-dita.dir}/lib/prettydita-1.0.jar"/>
 		<typedef file="${dita.plugin.fox.jason.pretty-dita.dir}/resource/antlib.xml"/>
 
 		<!-- This defines the output file -->
