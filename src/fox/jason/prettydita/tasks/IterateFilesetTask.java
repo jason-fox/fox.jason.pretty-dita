@@ -101,7 +101,7 @@ public class IterateFilesetTask extends Task {
     if (this.macro == null) {
       throw new BuildException("You must supply a macro");
     }
-    if (filesets.isEmpty()) {
+    if (this.filesets.isEmpty()) {
       throw new BuildException("You must supply a set of files");
     }
 

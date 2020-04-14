@@ -329,11 +329,11 @@ public class PrettyDitaTask extends Task {
 
     try {
       String dita = FileUtils.readFully(
-        new java.io.FileReader(file)
+        new java.io.FileReader(this.file)
       );
       String tidy = prettifyDita(dita);
       Echo task = (Echo) getProject().createTask("echo");
-      task.setFile(new java.io.File(file));
+      task.setFile(new java.io.File(this.file));
       task.setMessage(tidy);
       task.perform();
     } catch (IOException e) {
