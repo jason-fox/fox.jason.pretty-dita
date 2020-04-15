@@ -82,7 +82,7 @@ public class PrettyDitaTask extends Task {
 
     textArr.add("<!DOCTYPE " + doctype + " " + getDoctype(doctype) + ">");
 
-    if (this.addPragma && (!this.hasPragma)) {
+    if (addPragma && (!hasPragma)) {
       textArr.add("<!-- @format -->");
     }
   }
@@ -186,7 +186,7 @@ public class PrettyDitaTask extends Task {
     int split = 0;
     List<String> arr = new ArrayList<>();
     char[] charArray = new char[indentSize];
-    Arrays.fill(charArray, this.indentStyle);
+    Arrays.fill(charArray, indentStyle);
     String spaces = new String(charArray);
 
     while (split > -1) {
@@ -221,9 +221,9 @@ public class PrettyDitaTask extends Task {
   // but don't break up  inline tags unless absolutely
   // necessary.
   private int splitAtSpace(String text) {
-    int space = text.lastIndexOf(' ', this.printWidth);
+    int space = text.lastIndexOf(' ', printWidth);
     if (space < 1) {
-      space = text.indexOf(' ', this.printWidth);
+      space = text.indexOf(' ', printWidth);
     }
     if (space < 1) {
       return -1;
@@ -234,7 +234,7 @@ public class PrettyDitaTask extends Task {
     if (closeClose == -1) {
       return space;
     }
-    return closeClose > this.printWidth + 20
+    return closeClose > printWidth + 20
       ? space
       : text.indexOf(' ', text.indexOf('>', closeClose));
   }
@@ -280,6 +280,10 @@ public class PrettyDitaTask extends Task {
 
       if (endCodeblock && !startCodeblock) {
         withinCodeblock = false;
+        int lastLineIndex = textArr.size() - 1; 
+        if ("".equals(textArr.get(lastLineIndex).trim())){
+          textArr.remove(lastLineIndex);
+        }
         textArr.add(line);
         continue;
       }
@@ -322,30 +326,30 @@ public class PrettyDitaTask extends Task {
     //    @param file    - The DITA file to clean up
     //    @param pragma  - Whether to add a pragma statement if it is missing
     //
-    if (this.file == null) {
+    if (file == null) {
       throw new BuildException("You must supply a file");
     }
 
     String indentUsing = getProject().getProperty("args.style") == null
       ? "spaces"
       : getProject().getProperty("args.style");
-    this.printWidth =
+    printWidth =
       getProject().getProperty("args.print-width") == null
         ? 80
         : Integer.parseInt(getProject().getProperty("args.print-width"));
-    this.addPragma =
+    addPragma =
       getProject().getProperty("args.insert-pragma") == null
         ? false
         : Boolean.parseBoolean(getProject().getProperty("args.insert-pragma"));
-    this.indentStyle = ("tabs".equals(indentUsing)) ? '\t' : ' ';
+    indentStyle = ("tabs".equals(indentUsing)) ? '\t' : ' ';
 
     try {
       String dita = FileUtils.readFully(
-        new java.io.FileReader(this.file)
+        new java.io.FileReader(file)
       );
       String tidy = prettifyDita(dita);
       Echo task = (Echo) getProject().createTask("echo");
-      task.setFile(new java.io.File(this.file));
+      task.setFile(new java.io.File(file));
       task.setMessage(tidy);
       task.perform();
     } catch (IOException e) {
