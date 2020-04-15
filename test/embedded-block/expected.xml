@@ -12,7 +12,8 @@
     <conbody>
         <note>
            As of DITA-OT 2.2, the <codeph>move-meta-entries</codeph> and <codeph>mappull</codeph>
-           steps have been merged. The <codeph>mappull</codeph> step has been moved into <codeph>move-meta-entries</codeph>.
+           steps have been merged. The <codeph>mappull</codeph> step has been moved into
+           <codeph>move-meta-entries</codeph>.
         </note>
         <section>
             <p>

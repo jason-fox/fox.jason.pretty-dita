@@ -8,10 +8,12 @@
     <conbody>
         <ul>
             <li>
-               <codeph>term</codeph> (empty) with <codeph>keyref</codeph> attribute: <term keyref="usbfd"/>
+               <codeph>term</codeph> (empty) with <codeph>keyref</codeph> attribute: <term
+               keyref="usbfd"/>
             </li>
             <li>
-               <codeph>term</codeph> (filled) with <codeph>keyref</codeph> attribute: <term keyref="usbfd">term</term>
+               <codeph>term</codeph> (filled) with <codeph>keyref</codeph> attribute: <term
+               keyref="usbfd">term</term>
             </li>
             <li>
                <codeph>abbreviated-form</codeph>:

@@ -202,6 +202,18 @@ public class PrettyDitaTask extends Task {
       }
     }
 
+    int lastLineIndex = arr.size()-1;
+    String lastLine = arr.get(lastLineIndex);
+
+    if (lastLine.length() > printWidth){
+      int underflow = lastLine.substring(0, printWidth).lastIndexOf(' ');
+
+      if (printWidth - underflow < lastLine.length() -  printWidth){
+          arr.set(arr.size() - 1, lastLine.substring(0, underflow));
+          arr.add(lastLine.substring(underflow, lastLine.length()));
+      }
+    }
+
     return spaces + " " + String.join("\n" + spaces, arr);
   }
 
