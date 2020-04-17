@@ -419,4 +419,4 @@ PRs accepted.
 
 ## License
 
-[Apache 2.0](LICENSE) © 2019 Jason Fox
+[Apache 2.0](LICENSE) © 2019 - 2020 Jason Fox
