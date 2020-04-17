@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="basic-usage">
+    <title>Lines</title>
+    <body outputclass="language-markup">
+        <p>
+           This is a sample of my favorite sonnet.
+        </p>
+        <lines>
+Shall I compare thee to a summer's day?
+Thou art more lovely and more temperate:
+Rough winds do shake the darling buds of May,
+and summer's lease hath all too short a date:
+...</lines>
+        <p>
+           A sequence of failed password attempts generates the following characteristic
+           message stream:
+        </p>
+        <msgblock>
+I:0
+S:3
+I:1
+S:3
+I:1
+S:4
+S:99 (lockup)
+</msgblock>
+        <section id="section-id">
+            <title>Include a PRE block</title>
+            <p>
+               The rendered result will differ depending on the processor that is rendering
+               your DITA content. It will generally look something like this:
+            </p>
+            <pre>
+          MEMO: programming team fun day
+Remember to bring a kite, softball glove, or other favorite
+outdoor accessory to tomorrow's fun day outing at Zilker Park.
+Volunteers needed for the dunking booth.
+</pre>
+        </section>
+    </body>
+</topic>
