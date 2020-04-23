@@ -11,16 +11,12 @@
                     <ul>
                         <li>
                             <p>
-                               Beep duration
-<b>3 times 0.5s</b>
-   : update finished successfully
+                               Beep duration <b>3 times 0.5s</b> : update finished successfully
                             </p>
                         </li>
                         <li>
                             <p>
-                               Beep duration
-	<b>30 times 0.1s</b>
-    : update finished with errors
+                               Beep duration <b>30 times 0.1s</b> : update finished with errors
                             </p>
                         </li>
                     </ul>

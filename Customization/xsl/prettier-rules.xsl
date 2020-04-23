@@ -85,7 +85,19 @@
 
 	<!-- Escape newlines within text nodes, for readability. -->
 	<xsl:template match="text()">
-		<xsl:variable name="text" select="."/>	  	
+		<xsl:variable name="text">
+			<xsl:choose>
+				<xsl:when test="ancestor::codeblock|ancestor::lines|ancestor::msgblock|ancestor::pre">
+					<xsl:value-of select="."/>
+				</xsl:when>
+				<xsl:when test="./following-sibling::*">
+					<xsl:value-of select="replace(., '\s+$', ' ')"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="."/>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>  	
 		<xsl:call-template name="escapeNewlines">
 			<xsl:with-param name="text">
 				<xsl:value-of select="$text"/>	
