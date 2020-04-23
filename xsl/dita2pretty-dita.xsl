@@ -37,7 +37,7 @@
 	-->
 	<xsl:template name="basic-block">
 		<xsl:param name="depth">0</xsl:param>
-		<xsl:copy-of select="@*"/>
+		
 		<xsl:apply-templates>
 			<xsl:with-param name="depth" select="$depth + 1"/>
 		</xsl:apply-templates>
@@ -59,7 +59,6 @@
 	<xsl:template name="indented-block">
 		<xsl:param name="depth">0</xsl:param>
 		<xsl:value-of select="$newline"/>
-		<xsl:copy-of select="@*"/>
 		<xsl:apply-templates>
 			<xsl:with-param name="depth" select="$depth + 1"/>
 		</xsl:apply-templates>

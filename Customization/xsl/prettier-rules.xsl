@@ -24,6 +24,7 @@
 		</xsl:call-template>
 
 		<xsl:copy>
+			<xsl:copy-of select="@*"/>
 			<xsl:choose>
 				<!-- Basic topic elements requiring a new line are listed here -->
 				<xsl:when test="self::abstract|self::shortdesc">
@@ -84,11 +85,12 @@
 
 	<!-- Escape newlines within text nodes, for readability. -->
 	<xsl:template match="text()">
-	  <xsl:call-template name="escapeNewlines">
-		<xsl:with-param name="text">
-		<xsl:value-of select="."/>
-	    	</xsl:with-param>
-	  </xsl:call-template>
+		<xsl:variable name="text" select="."/>	  	
+		<xsl:call-template name="escapeNewlines">
+			<xsl:with-param name="text">
+				<xsl:value-of select="$text"/>	
+			</xsl:with-param>
+		</xsl:call-template>
 	</xsl:template>
 
 </xsl:stylesheet>

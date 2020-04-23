@@ -55,6 +55,6 @@
 	<!--
 		Ant target executed to run the prettifier.
 	-->
-	<target name="dita2pretty-dita" description="Prettify the DITA files for a given document" depends="cats.splash,build-init,pretty-dita.init,passthrough,prismjs,pretty-dita"/>
+	<target name="dita2pretty-dita" description="Prettify the DITA files for a given document" depends="prismjs.init,cats.splash,build-init,pretty-dita.init,passthrough,prismjs,pretty-dita"/>
 
 </project>
