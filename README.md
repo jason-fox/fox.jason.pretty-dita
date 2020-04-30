@@ -7,9 +7,9 @@
 [![Documentation Status](https://readthedocs.org/projects/pretty-dita-ot/badge/?version=latest)](https://pretty-dita-ot.readthedocs.io/en/latest/?badge=latest)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=fox.jason.pretty-dita&metric=alert_status)](https://sonarcloud.io/dashboard?id=fox.jason.pretty-dita)
 
-This is a DITA prettifier [DITA-OT Plug-in](https://www.dita-ot.org/plugins) which formats DITA XML in an aesthetically pleasing manner. `<topic>`
-elements, `<section>` elements, `<p>` elements etc are regularly indented so the raw DITA XML files can be scanned by
-humans:
+This is a DITA prettifier [DITA-OT Plug-in](https://www.dita-ot.org/plugins) which formats DITA XML in an aesthetically
+pleasing manner. `<topic>` elements, `<section>` elements, `<p>` elements etc are regularly indented so the raw DITA XML
+files can be scanned by humans:
 
 ### Unformatted DITA
 
@@ -206,7 +206,8 @@ Like any other transform, when invoked directly, the prettier requires an input 
 
 ### Prettifying DITA files for a document
 
-To prettify DITA files for a document, use the `pretty-dita` transform,  set the `--input` parameter to point to a `*.ditamap` file:
+To prettify DITA files for a document, use the `pretty-dita` transform, set the `--input` parameter to point to a
+`*.ditamap` file:
 
 ```console
 PATH_TO_DITA_OT/bin/dita -f pretty-dita -i document.ditamap
@@ -216,7 +217,8 @@ All `*.dita` and `*.ditamap` files **under that directory** will be updated in p
 
 ### Prettifying DITA files under a directory
 
-To prettify DITA files within a directory, use the `pretty-dita` transform,  set the `--input` parameter to point to the directory :
+To prettify DITA files within a directory, use the `pretty-dita` transform, set the `--input` parameter to point to the
+directory :
 
 ```console
 PATH_TO_DITA_OT/bin/dita -f pretty-dita -i /path-to-directory
@@ -239,13 +241,13 @@ The specified file will be updated in place.
 -   `args.indent` - How many characters to indent (default `4`)
 -   `args.style` - Whether to indent using tabs or spaces (default `spaces`)
 -   `args.print-width` - Specify the line length that the printer will wrap on (default `80`)
--   `args.require-pragma` - Restrict the plug-in to only format files that contain a special comment, called
-    a pragma, at the top of the file (default `false`)
+-   `args.require-pragma` - Restrict the plug-in to only format files that contain a special comment, called a pragma,
+    at the top of the file (default `false`)
 
     This is very useful when gradually transitioning large, unformatted codebases to pretty-dita.
 
-    For example, a file containing either of the following comments will be formatted when `args.require-pragma`
-    is supplied:
+    For example, a file containing either of the following comments will be formatted when `args.require-pragma` is
+    supplied:
 
 ```xml
 <!-- @prettier -->
@@ -255,8 +257,8 @@ The specified file will be updated in place.
 <!-- @format -->
 ```
 
--   `args.insert-pragma` - Insert a special `@format` marker at the top of files specifying that the file
-    has been formatted with the plugin (default `false`)
+-   `args.insert-pragma` - Insert a special `@format` marker at the top of files specifying that the file has been
+    formatted with the plugin (default `false`)
 
 ### Ignoring DITA files
 
@@ -306,7 +308,7 @@ The following elements frequently contain a large body of text within them. The 
 always placed on a separate line before displaying the text found within them:
 
 -   Topic elements: `abstract`, `shortdesc`
--   Body elements: `p`,  `li`, `note`, `lq`
+-   Body elements: `p`, `li`, `note`, `lq`
 
 #### Example
 
