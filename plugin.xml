@@ -4,7 +4,7 @@
    This file is part of the DITA-OT Pretty DITA Plug-in project.
    See the accompanying LICENSE file for applicable licenses.
 -->
-<plugin id="fox.jason.pretty-dita" version="1.4.0">
+<plugin id="fox.jason.pretty-dita" version="1.4.1">
 	<feature extension="dita.conductor.lib.import" file="lib/prettydita-1.0.jar"/>
 	
 	<transtype abstract="false" desc="Prettify the DITA files for a given document" name="pretty-dita">
