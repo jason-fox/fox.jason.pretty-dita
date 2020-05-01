@@ -26,8 +26,7 @@
 			<val default="true">false</val>
 		</param>
 		<param name="args.insert-pragma" type="enum"
-			desc="Insert a special @format marker at the top of files specifying that the file
-    has been formatted with the plugin">
+			desc="Insert a special @format marker at the top of files specifying that the file has been formatted">
 			<val>true</val>
 			<val default="true">false</val>
 		</param>
