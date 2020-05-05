@@ -56,7 +56,7 @@
 
 
 	<!-- Inline body elements are listed here -->
-	<xsl:template match="ph|codeph|synph|term|xref|cite|q|boolean|state|keyword|option|tm|fn|xref">
+	<xsl:template match="ph|codeph|synph|term|xref|cite|q|boolean|state|keyword|option|tm|fn|xref|text">
 		<xsl:call-template name="inline-element"/>
 	</xsl:template>
 	<!-- Inline xmlconstruct elements are listed here -->
@@ -79,9 +79,14 @@
 	<xsl:template match="parmname|apiname">
 		<xsl:call-template name="inline-element"/>
 	</xsl:template>
-
-
-
+	<!-- Inline glossary related elements are listed here -->
+	<xsl:template match="abbreviated-form">
+		<xsl:call-template name="inline-element"/>
+	</xsl:template>
+	<!-- Inline markup domain elements are listed here -->
+	<xsl:template match="markupname">
+		<xsl:call-template name="inline-element"/>
+	</xsl:template>
 
 	<!-- Escape newlines within text nodes, for readability. -->
 	<xsl:template match="text()">
