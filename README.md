@@ -307,8 +307,8 @@ DITA element
 The following elements frequently contain a large body of text within them. The opening and closing tags are therefore
 always placed on a separate line before displaying the text found within them:
 
--   Topic elements: `abstract`, `shortdesc`
--   Body elements: `p`, `li`, `note`, `lq`
+-   Topic elements: `<abstract>`, `<shortdesc>`
+-   Body elements: `<p>`, `<li>`, `<note>`, `<lq>`
 
 #### Example
 
@@ -338,13 +338,13 @@ always placed on a separate line before displaying the text found within them:
 The following elements are treated as inline elements, they do not warrant an additional line and are kept within the
 surrounding text
 
--   Body elements: `ph`, `codeph`, `synph`, `term`, `xref`, `cite`, `q`, `boolean`, `state`, `keyword`, `option`, `tm`,
-    `fn`, `xref`
--   Programming elements: `parmname`, `apiname`
--   Typographic elements: `b`, `i`, `sup`, `sub`, `tt`, `u`
--   Software elements: `filepath`, `msgph`, `userinput`, `systemoutput`, `cmdname`, `msgnum`, `varname`
--   Userinteface elements: `uicontrol`, `menucascade`, `wintitle`
--   XML Mention Domain: `numcharref`, `parameterentity`, `textentity`, `xmlatt`, `xmlelement`, `xmlnsname`, `xmlpi`
+-   Body elements: `<ph>`, `<codeph>`, `<synph>`, `<term>`, `<xref>`, `<cite>`, `<q>`, `<boolean>`, `<state>`, `<keyword>`, `<option>`, `<tm>`,
+    `<fn>`, `<xref>`
+-   Programming elements: `<parmname>`, `<apiname>`
+-   Typographic elements: `<b>`, `<i>`, `<sup>`, `<sub>`, `<tt>`, `<u>`
+-   Software elements: `<filepath>`, `<msgph>`, `<userinput>`, `<systemoutput>`, `<cmdname>`, `<msgnum>`, `<varname>`
+-   Userinteface elements: `<uicontrol>`, `<menucascade>`, `<wintitle>`
+-   XML Mention Domain: `<numcharref>`, `<parameterentity>`, `<textentity>`, `<xmlatt>`, `<xmlelement>`, `<xmlnsname>`, `<xmlpi>`
 
 #### Example
 
@@ -377,7 +377,7 @@ this is sometimes not feasable within the line limits, so a line break may occur
 
 The following elements are whitespace sensitive and require special processing:
 
--   `codeblock`, `lines`, `msgblock`, `pre`
+-   `<codeblock>`, `<lines>`, `<msgblock>`, `<pre>`, `<foreign>`
 
 The opening tag of a `<codeblock>` is indented normally, the text within a `<codeblock>` (if any) is not indented
 

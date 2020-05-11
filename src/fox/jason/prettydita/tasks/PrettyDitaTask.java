@@ -251,9 +251,9 @@ public class PrettyDitaTask extends Task {
 
     // Definition of Whitespace sensitive elements
     Pattern reStart = Pattern.compile(
-      "^\\s+<(codeblock|lines|msgblock|pre)(>| )"
+      "^\\s+<(codeblock|lines|msgblock|pre|foreign)(>| )"
     );
-    Pattern reEnd = Pattern.compile(".*</(codeblock|lines|msgblock|pre)>");
+    Pattern reEnd = Pattern.compile(".*</(codeblock|lines|msgblock|pre|foreign)>");
     Pattern reDoctype = Pattern.compile("^<\\w");
     Pattern reBlock = Pattern.compile("^\\s*<.*>$");
 
