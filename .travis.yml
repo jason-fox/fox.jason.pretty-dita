@@ -15,7 +15,7 @@ addons:
       secure: "G/9tKFEzsYzl1WeYQHW1KejUNXyA8LGC+igdpKfgDh5k1jLfpIIx2kfwHd5y+3smCbD3CmeT6ZEiTp/uFzxGfaHU6SQJIbL3PQt1fH0qyFujipFW5TnKLv760Zy5eqtchIb+yyHlwZz6LlXSaidot8ngkNMbrpEgCZ7DvtRd5UpA7LTNxd60/+KYbz9cvg5no3YDIl6/rFazw2YO4Nt/4UNImN5X5b9dzfzGn1FO2GaMh1+Rp9buSh6OlPJYCjPrjZttuklbfoc5YY0ZU+SF0nArOpMMfDCgaevgHW7MNN1ei4q9sJeuQAicjqKp1HqDr5oseeuy7uq4GlcgSjeaWQ7oDdwqmFoUjbefJA3Xh4UjckUpzHbhxxRi+gXtCSzVvj5N7lnz21FBm6pafmKX6XsguP+SA4JGzObbZ6CDxF6G+h3LjDM/J79EfcJADpW4WKJG08EGrsMPAmDGoXgU5gi6ol2S/pvGmXDzCDR4OftHo5GEl03+yyDOKerbglslheZLLPo0WfjIhVoX+4ScgphQO/tNrvHVdC/O+tykF7buUlFgJp6ZL7oJkbhv057PT9PdMqCPebg3e7eZ89+J1kbZDZGfKANoE1ObsXnNXadwHKPjOewmyiB36i+ry0yAs/su1OHpwR83EHdLnr9/5K2Wz76vuEdkZzJCLvYI5xw="
 
 env:
-  - DITA_OT=3.5
+  - DITA_OT=3.5.1
 
 before_install:
   - zip -r fox.jason.pretty-dita.zip . -x *.zip* *.git/* *temp/* *out/*
