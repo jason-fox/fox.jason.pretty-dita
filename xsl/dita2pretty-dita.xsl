@@ -87,7 +87,7 @@
 	<!-- Inline DITA elements are processed here -->
 	<xsl:template name="inline-element">
 		<xsl:copy>
-			<xsl:copy-of select="@*"/>
+			<xsl:copy-of select="@*[not(name()='class')]"/>
 			<xsl:apply-templates />
 		</xsl:copy>
 	</xsl:template>

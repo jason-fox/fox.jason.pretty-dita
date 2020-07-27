@@ -24,7 +24,7 @@
 		</xsl:call-template>
 
 		<xsl:copy>
-			<xsl:copy-of select="@*"/>
+			<xsl:copy-of select="@*[not(name()='class' or name()='domains' or  local-name()='DITAArchVersion' or local-name()='space' or name()='xmlns:ditaarch')]"/>
 			<xsl:choose>
 				<!-- Basic topic elements requiring a new line are listed here -->
 				<xsl:when test="self::abstract|self::shortdesc">
@@ -109,5 +109,4 @@
 			</xsl:with-param>
 		</xsl:call-template>
 	</xsl:template>
-
 </xsl:stylesheet>

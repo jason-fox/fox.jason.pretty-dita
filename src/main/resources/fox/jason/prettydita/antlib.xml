@@ -95,6 +95,7 @@
 				<param if="args.indent" expression="${args.indent}" name="INDENT" type="INT"/>
 				<param if="args.style" expression="${args.style}" name="STYLE"/>
 			</xslt>
+			<replace unless:set="prettier.ignore" file="${copy.file}" token=" xmlns:ditaarch=&quot;http://dita.oasis-open.org/architecture/2005/&quot;" value=""/>
 
 			<!-- The whitespace is tidied up according to opinionated rules -->
 			<tidy-whitespace unless:set="prettier.ignore" file="${copy.file}" pragma="${prettier.hasPragma}"/>
