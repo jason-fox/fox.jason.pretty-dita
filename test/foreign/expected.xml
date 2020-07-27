@@ -20,11 +20,11 @@
 </foreign>
             </fig>
         </p>
-        <foreign class="+ topic/foreign mathml-d/mathml ">
+        <foreign>
             <object data="dita-generalized-topicid_mathml1.xml" type="DITA-foreign"/>
             <data-about>X plus three</data-about>
         </foreign>
-        <foreign xmlns:m="http://www.w3.org/1998/Math/MathML" class="+ topic/foreign mathml-d/mathml ">
+        <foreign xmlns:m="http://www.w3.org/1998/Math/MathML">
             <m:math>
                 <m:mi>x</m:mi>
                 <m:mo>+</m:mo>
