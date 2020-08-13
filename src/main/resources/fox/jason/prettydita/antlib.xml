@@ -62,6 +62,29 @@
 
 			<xmlcatalog id="fake.dita.catalog">
 				<catalogpath path="${dita.plugin.org.dita.base.dir}/catalog-dita.xml"/>
+				<dtd publicId="-//OASIS//DTD DITA Topic//EN" location="${dita.plugin.fox.jason.pretty-dita.dir}/resource/fake.dtd"/>
+				<dtd publicId="-//OASIS//DTD DITA Map//EN" location="${dita.plugin.fox.jason.pretty-dita.dir}/resource/fake.dtd"/>
+				<dtd publicId="-//OASIS//DTD DITA BookMap//EN" location="${dita.plugin.fox.jason.pretty-dita.dir}/resource/fake.dtd"/>
+				<dtd publicId="-//OASIS//DTD DITA DITAVAL//EN" location="${dita.plugin.fox.jason.pretty-dita.dir}/resource/fake.dtd"/>
+				<dtd publicId="-//OASIS//DTD DITA Concept//EN" location="${dita.plugin.fox.jason.pretty-dita.dir}/resource/fake.dtd"/>
+				<dtd publicId="-//OASIS//DTD DITA Task//EN" location="${dita.plugin.fox.jason.pretty-dita.dir}/resource/fake.dtd"/>
+				<dtd publicId="-//OASIS//DTD DITA Composite//EN" location="${dita.plugin.fox.jason.pretty-dita.dir}/resource/fake.dtd"/>
+				<dtd publicId="-//OASIS//DTD DITA Glossary Entry//EN" location="${dita.plugin.fox.jason.pretty-dita.dir}/resource/fake.dtd"/>
+				<dtd publicId="-//OASIS//DTD DITA Glossary//EN" location="${dita.plugin.fox.jason.pretty-dita.dir}/resource/fake.dtd"/>
+				<dtd publicId="-//OASIS//DTD DITA Reference//EN" location="${dita.plugin.fox.jason.pretty-dita.dir}/resource/fake.dtd"/>
+				<dtd publicId="-//OASIS//DTD DITA General Task//EN" location="${dita.plugin.fox.jason.pretty-dita.dir}/resource/fake.dtd"/>
+				<dtd publicId="-//OASIS//DTD DITA Base Topic//EN" location="${dita.plugin.fox.jason.pretty-dita.dir}/resource/fake.dtd"/>
+				<dtd publicId="-//OASIS//DTD DITA Machinery Task//EN" location="${dita.plugin.fox.jason.pretty-dita.dir}/resource/fake.dtd"/>
+				<dtd publicId="-//OASIS//DTD DITA Learning Assessment//EN" location="${dita.plugin.fox.jason.pretty-dita.dir}/resource/fake.dtd"/>
+				<dtd publicId="-//OASIS//DTD DITA Learning Content//EN" location="${dita.plugin.fox.jason.pretty-dita.dir}/resource/fake.dtd"/>
+				<dtd publicId="-//OASIS//DTD DITA Learning Overview//EN" location="${dita.plugin.fox.jason.pretty-dita.dir}/resource/fake.dtd"/>
+				<dtd publicId="-//OASIS//DTD DITA Learning Plan//EN" location="${dita.plugin.fox.jason.pretty-dita.dir}/resource/fake.dtd"/>
+				<dtd publicId="-//OASIS//DTD DITA Learning Summary//EN" location="${dita.plugin.fox.jason.pretty-dita.dir}/resource/fake.dtd"/>
+				<dtd publicId="-//OASIS//DTD DITA Base Map//EN" location="${dita.plugin.fox.jason.pretty-dita.dir}/resource/fake.dtd"/>
+				<dtd publicId="-//OASIS//DTD DITA Subject Scheme Map//EN" location="${dita.plugin.fox.jason.pretty-dita.dir}/resource/fake.dtd"/>
+				<dtd publicId="-//OASIS//DTD DITA Classification Map//EN" location="${dita.plugin.fox.jason.pretty-dita.dir}/resource/fake.dtd"/>
+				<dtd publicId="-//OASIS//DTD DITA Learning BookMap//EN" location="${dita.plugin.fox.jason.pretty-dita.dir}/resource/fake.dtd"/>
+				<dtd publicId="-//OASIS//DTD DITA Learning Map//EN" location="${dita.plugin.fox.jason.pretty-dita.dir}/resource/fake.dtd"/>
 			</xmlcatalog>
 
 			<local name="copy.file"/>
