@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="the-update-mechanism-in-general" xml:lang="en-us">
+	<title>The update mechanism in general</title>
+	<body>
+<p id="watch-update">
+The state of a update process can be observed by different means:
+<ol>
+<li id="sound-beep">
+	When the update is finished a beep is played:
+	<ul>
+		<li>
+			<p>
+Beep duration
+<b>3 times 0.5s</b>
+: update finished successfully
+				</p>
+			</li>
+			<li>
+<p>
+	Beep duration
+	<b>30 times 0.1s</b>
+	: update finished with errors
+</p>
+			</li>
+		</ul>
+	</li>
+	</ol>
+		</p>
+	</body>
+</topic>
