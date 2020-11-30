@@ -2,7 +2,7 @@
 
 [![license](https://img.shields.io/github/license/jason-fox/fox.jason.pretty-dita.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 [![DITA-OT 3.5](https://img.shields.io/badge/DITA--OT-3.5-blue.svg)](http://www.dita-ot.org/3.5)
-[![CI](https://github.com/jason-fox/fox.jason.readthedocs/workflows/CI/badge.svg)](https://github.com/jason-fox/fox.jason.readthedocs/actions?query=workflow%3ACI)
+[![CI](https://github.com/jason-fox/fox.jason.pretty-dita/workflows/CI/badge.svg)](https://github.com/jason-fox/fox.jason.pretty-dita/actions?query=workflow%3ACI)
 [![Coverage Status](https://coveralls.io/repos/github/jason-fox/fox.jason.pretty-dita/badge.svg?branch=master)](https://coveralls.io/github/jason-fox/fox.jason.pretty-dita?branch=master)
 [![Documentation Status](https://readthedocs.org/projects/pretty-dita-ot/badge/?version=latest)](https://pretty-dita-ot.readthedocs.io/en/latest/?badge=latest)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=fox.jason.pretty-dita&metric=alert_status)](https://sonarcloud.io/dashboard?id=fox.jason.pretty-dita)
