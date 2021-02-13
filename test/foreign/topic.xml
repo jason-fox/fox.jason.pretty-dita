@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="redundancy-handling" xml:lang="en-us">
+               <title>Redundancy Handling</title>
+<body>
+<p>
+<fig id="redundancy-handling-1">
+<title>Startup of ...</title>
+<foreign outputclass="embed-plant-uml">
+@startuml
+     scale 0.6
+     autonumber "&lt;b>[0]"
+
+     title Startup of ...
+
+     group startup
+         Gateway -> XXX : Query DMI pos
+     end
+@enduml
+</foreign>
+</fig>
+</p>
+
+<foreign class="+ topic/foreign mathml-d/mathml "><object data="dita-generalized-topicid_mathml1.xml" type="DITA-foreign"/><data-about>X plus three</data-about></foreign>
+
+<foreign class="+ topic/foreign mathml-d/mathml "
+         xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <m:math>
+    <m:mi>x</m:mi><m:mo>+</m:mo><m:mn>3</m:mn>
+  </m:math>
+</foreign>
+</body>
+
+</topic>
