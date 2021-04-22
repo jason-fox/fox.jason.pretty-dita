@@ -1,2 +1,5 @@
-test/* linguist-vendored
-sample/* linguist-documentation
+test/** linguist-vendored
+sample/** linguist-documentation
+
+build_dita2pretty-dita_template.xml linguist-language=Ant-Build-System
+src/main/resources/fox/jason/prettydita/antlib.xml linguist-language=Ant-Build-System
