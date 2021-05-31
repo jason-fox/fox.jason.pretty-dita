@@ -76,7 +76,7 @@
 		<xsl:call-template name="inline-element"/>
 	</xsl:template>
 	<!-- Inline programming elements are listed here -->
-	<xsl:template match="parmname|apiname">
+	<xsl:template match="parmname|apiname|coderef">
 		<xsl:call-template name="inline-element"/>
 	</xsl:template>
 	<!-- Inline glossary related elements are listed here -->
