@@ -13,8 +13,7 @@
                     <codeblock>&lt;project&gt;
 &lt;display id="displayConfig"&gt;
     name=" <b>EVT_Sound_SignalHorn </b>"/&gt;
-&lt;/project&gt;
-                    </codeblock>
+&lt;/project&gt;</codeblock>
                 </stepxmp>
             </step>
         </steps>

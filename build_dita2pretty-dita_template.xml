@@ -3,32 +3,74 @@
 	This file is part of the DITA-OT Pretty DITA Plug-in project.
 	See the accompanying LICENSE file for applicable licenses.
 -->
-<project name="fox.jason.pretty-dita" xmlns:if="ant:if" xmlns:unless="ant:unless" xmlns:dita="http://dita-ot.sourceforge.net" >
+<project name="fox.jason.pretty-dita" xmlns:if="ant:if" xmlns:unless="ant:unless" xmlns:dita="http://dita-ot.sourceforge.net" xmlns:pretty="antlib:fox.jason.prettydita"  >
 
 	<!--
 		Runs the prettier over the specified files.
 	-->
-	<target name="pretty-dita">		
-		<fileset if:set="pretty-dita.single-file" id="dist.contents" file="${args.input}" />
-		<fileset unless:set="pretty-dita.single-file" id="dist.contents" dir="${args.input.dir}" casesensitive="yes">
-			<include name="**/*.dita"/>
-			<include name="**/*.ditamap"/>
-		</fileset>
+	<target name="pretty-dita">	
+		<!--
+			Prettify an individual DITA file
 
-		<prettify-files dir="${args.input.dir}" toDir="${args.input.dir}" refid="dist.contents"/>
-		<pretty-dita-success-echo/>
+			@param toDir - The output location of the files
+			@param dir  - The location of the files to process
+			@param src - A file to prettify
+		-->
+		<macrodef name="prettify-file">
+			<attribute name="src"/>
+			<attribute name="dir"/>
+			<attribute name="toDir"/>
+			<sequential>
+
+				<local name="copy.file"/>
+				<tempfile deleteonexit="true" destdir="${dita.temp.dir}" property="copy.file"/>
+
+				<!-- Check to see if a pragma directive is present -->
+				<local name="prettier.hasPragma"/>
+				<condition property="prettier.hasPragma">
+					<or>
+						<resourcecontains resource="@{dir}/@{src}" substring="&lt;!-- @prettier"/>
+						<resourcecontains resource="@{dir}/@{src}" substring="&lt;!-- @format"/>
+					</or>
+				</condition>
+				<property name="prettier.hasPragma" value="false"/>
+
+				<!-- Check to see if we should ignore this file -->
+				<local name="prettier.ignore"/>
+				<condition property="prettier.ignore">
+					<or>
+						<resourcecontains resource="@{dir}/@{src}" substring="&lt;!-- prettier-ignore"/>
+						<and>
+							<istrue value="${args.require-pragma}"/>
+							<isfalse value="${prettier.hasPragma}"/>
+						</and>
+					</or>
+				</condition>
+
+				<!-- The dita2pretty-dita XSLT Transform will indent elements -->
+				<pretty:format unless:set="prettier.ignore" src="@{src}" dir="@{dir}" file="${copy.file}"/>
+
+				<!-- The whitespace is tidied up according to opinionated rules -->
+				<pretty:tidy-whitespace unless:set="prettier.ignore" file="${copy.file}" pragma="${prettier.hasPragma}"/>
+				<copy unless:set="prettier.ignore" file="${copy.file}" tofile="@{toDir}/@{src}"/>
+			</sequential>
+		</macrodef>
+
+
+		<dita-ot-echo id="PRTY001I">
+			<param name="1" value="Prettifying DITA files."/>
+		</dita-ot-echo>
+		<!-- Interate over all files and prettify -->
+		<pretty:iterate macro="prettify-file" dir="${args.input.dir}" todir="${args.input.dir}" >
+			<fileset refid="dist.contents"/>
+		</pretty:iterate>
+		<pretty:success-echo/>
 	</target>
 
 	<!--
 		Sets up ANT variable defaults
 	-->
 	<target name="pretty-dita.init">
-		<dita-ot-echo id="PRTY001I">
-			<param name="1" value="Prettifying DITA files."/>
-		</dita-ot-echo>
-
-		<taskdef resource="fox/jason/prettydita/antlib.xml"/>
-
 		<!-- This defines the output file -->
 		<dita-ot-fail id="DOTA069F">
 			<condition>
@@ -51,6 +93,12 @@
 		<property name="args.require-pragma" value="false"/>
 		<property name="args.insert-pragma" value="false"/>
 		<property name="args.print-width" value="80"/>
+
+		<fileset if:set="pretty-dita.single-file" id="dist.contents" file="${args.input}" />
+		<fileset unless:set="pretty-dita.single-file" id="dist.contents" dir="${args.input.dir}" casesensitive="yes">
+			<include name="**/*.dita"/>
+			<include name="**/*.ditamap"/>
+		</fileset>
 	</target>
 
 

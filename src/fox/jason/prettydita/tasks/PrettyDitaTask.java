@@ -257,6 +257,7 @@ public class PrettyDitaTask extends Task {
     Pattern reDoctype = Pattern.compile("^<\\w");
     Pattern reBlock = Pattern.compile("^\\s*<.*>$");
 
+
     // Read each line of the the DITA in turn
     for (String line : lines) {
       // For the first line re-insert the doctype
@@ -281,10 +282,18 @@ public class PrettyDitaTask extends Task {
       if (endCodeblock && !startCodeblock) {
         withinCodeblock = false;
         int lastLineIndex = textArr.size() - 1; 
-        if ("".equals(textArr.get(lastLineIndex).trim())){
+        String lastLine = textArr.get(lastLineIndex);
+        if ("".equals(lastLine.trim())){
           textArr.remove(lastLineIndex);
+          lastLineIndex = lastLineIndex - 1;
+          lastLine = textArr.get(lastLineIndex);
         }
-        textArr.add(line);
+        if ("</codeblock>".equals(line.trim())){
+          textArr.remove(lastLineIndex);
+          textArr.add(lastLine + line.trim());
+        } else {
+          textArr.add(line);
+        }
         continue;
       }
 

@@ -13,7 +13,8 @@
   ...
   &lt;script src="prism.js"&gt;&lt;/script&gt;
   &lt;/body&gt;
-&lt;/html&gt;</codeblock>
+&lt;/html&gt;
+</codeblock>
 <p>Prism does its best to encourage good authoring practices.  Therefore,it only works with <codeph>&lt;code&gt;</codeph> elements,  since marking upcode without a <codeph>&lt;code&gt;</codeph> element is semantically invalid.<xref format="html" scope="external" href="https://www.w3.org/TR/html52/textlevel-semantics.html#the-code-element">According to the HTML5 spec</xref>, the recommended way to define a code language is a <codeph>language-xxxx</codeph> class, which is what Prism uses. Alternatively, Prism also supports a shorter version: <codeph>lang-xxxx</codeph>.
 </p>
 <p> To make things easier however, Prism assumes that this language definition is inherited. Therefore, if multiple <codeph>&lt;code&gt;</codeph> elements have the same language, you can add the <codeph>language-xxxx</codeph> class on one of their common ancestors. This way, you can also define a document-wide default language, by adding a <codeph>language-xxxx</codeph> class on the <codeph>&lt;body&gt;</codeph> or <codeph>&lt;html&gt;</codeph> element.

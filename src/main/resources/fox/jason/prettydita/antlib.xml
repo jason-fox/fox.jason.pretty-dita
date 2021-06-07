@@ -27,39 +27,15 @@
 	<!--
 		Output a colorized success message.
 	-->
-	<taskdef classname="fox.jason.prettydita.tasks.SuccessEchoTask" name="pretty-dita-success-echo" onerror="ignore"/>
+	<taskdef classname="fox.jason.prettydita.tasks.SuccessEchoTask" name="success-echo" onerror="ignore"/>
 
-	<!--
-		Prettify an directory containing DITA files
 
-		@param toDir - The output location of the files
-		@param dir  - The location of the files to process
-		@param refid - The reference to a fileset
-	-->
-	<macrodef name="prettify-files">
-		<attribute name="toDir"/>
-		<attribute name="dir"/>
-		<attribute name="refid"/>
-		<sequential>
-			<iterate macro="prettify-file" dir="@{dir}" todir="@{toDir}" >
-				<fileset refid="@{refid}"/>
-			</iterate>
-		</sequential>
-	</macrodef>
-
-	<!--
-		Prettify an individual DITA file
-
-		@param toDir - The output location of the files
-		@param dir  - The location of the files to process
-		@param src - A file to prettify
-	-->
-	<macrodef name="prettify-file">
+	<!-- The dita2pretty-dita XSLT Transform will indent elements -->
+	<macrodef name="format">
 		<attribute name="src"/>
 		<attribute name="dir"/>
-		<attribute name="toDir"/>
+		<attribute name="file"/>
 		<sequential>
-
 			<xmlcatalog id="fake.dita.catalog">
 				<catalogpath path="${dita.plugin.org.dita.base.dir}/catalog-dita.xml"/>
 				<dtd publicId="-//OASIS//DTD DITA Topic//EN" location="${dita.plugin.fox.jason.pretty-dita.dir}/resource/fake.dtd"/>
@@ -86,43 +62,14 @@
 				<dtd publicId="-//OASIS//DTD DITA Learning BookMap//EN" location="${dita.plugin.fox.jason.pretty-dita.dir}/resource/fake.dtd"/>
 				<dtd publicId="-//OASIS//DTD DITA Learning Map//EN" location="${dita.plugin.fox.jason.pretty-dita.dir}/resource/fake.dtd"/>
 			</xmlcatalog>
-
-			<local name="copy.file"/>
-			<tempfile deleteonexit="true" destdir="${dita.temp.dir}" property="copy.file"/>
-
-			<!-- Check to see if a pragma directive is present -->
-			<local name="prettier.hasPragma"/>
-			<condition property="prettier.hasPragma">
-				<or>
-					<resourcecontains resource="@{dir}/@{src}" substring="&lt;!-- @prettier"/>
-					<resourcecontains resource="@{dir}/@{src}" substring="&lt;!-- @format"/>
-				</or>
-			</condition>
-			<property name="prettier.hasPragma" value="false"/>
-
-			<!-- Check to see if we should ignore this file -->
-			<local name="prettier.ignore"/>
-			<condition property="prettier.ignore">
-				<or>
-					<resourcecontains resource="@{dir}/@{src}" substring="&lt;!-- prettier-ignore"/>
-					<and>
-						<istrue value="${args.require-pragma}"/>
-						<isfalse value="${prettier.hasPragma}"/>
-					</and>
-				</or>
-			</condition>
-
+		
 			<!-- The dita2pretty-dita XSLT Transform will indent elements -->
-			<xslt unless:set="prettier.ignore" force="true" in="@{dir}/@{src}" out="${copy.file}" style="${dita.plugin.fox.jason.pretty-dita.dir}/xsl/dita2pretty-dita.xsl">
+			<xslt force="true" in="@{dir}/@{src}" out="@{file}" style="${dita.plugin.fox.jason.pretty-dita.dir}/xsl/dita2pretty-dita.xsl">
 				<xmlcatalog refid="fake.dita.catalog"/>
 				<param if="args.indent" expression="${args.indent}" name="INDENT" type="INT"/>
 				<param if="args.style" expression="${args.style}" name="STYLE"/>
 			</xslt>
-			<replace unless:set="prettier.ignore" file="${copy.file}" token=" xmlns:ditaarch=&quot;http://dita.oasis-open.org/architecture/2005/&quot;" value=""/>
-
-			<!-- The whitespace is tidied up according to opinionated rules -->
-			<tidy-whitespace unless:set="prettier.ignore" file="${copy.file}" pragma="${prettier.hasPragma}"/>
-			<copy unless:set="prettier.ignore" file="${copy.file}" tofile="@{toDir}/@{src}"/>
+			<replace file="@{file}" token=" xmlns:ditaarch=&quot;http://dita.oasis-open.org/architecture/2005/&quot;" value=""/>
 
 		</sequential>
 	</macrodef>

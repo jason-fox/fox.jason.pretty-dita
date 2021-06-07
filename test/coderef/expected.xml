@@ -7,8 +7,7 @@
            You will need to include the <codeph>prism.css</codeph> and <codeph>prism.js</codeph>
            files you downloaded in your page. Example:
         </p>
-        <codeblock><coderef href="./src/file.xml"/>
-        </codeblock>
+        <codeblock><coderef href="./src/file.xml"/></codeblock>
         <p>
            Prism does its best to encourage good authoring practices.  Therefore,it only
            works with <codeph>&lt;code&gt;</codeph> elements,  since marking upcode
@@ -21,8 +20,7 @@
         </p>
         <fig>
             <title>Fig</title>
-            <codeblock><coderef href="./src/file.xml"/>
-            </codeblock>
+            <codeblock><coderef href="./src/file.xml"/></codeblock>
         </fig>
     </body>
 </topic>
