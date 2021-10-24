@@ -11,6 +11,9 @@
 	<target name="unit-test">
 		<copy file="task.xml" tofile="task.dita" overwrite="true"/>
 		<exec-transtype transtype="pretty-dita"/>
-		<compare-output expectation="${basedir}/expected.xml" result="${basedir}/task.dita"/>
+		<compare-output
+      expectation="${basedir}/expected.xml"
+      result="${basedir}/task.dita"
+    />
 	</target>
 </project>

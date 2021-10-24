@@ -7,7 +7,11 @@
 <plugin id="fox.jason.pretty-dita" version="1.5.1">
 	<feature extension="dita.conductor.lib.import" file="lib/prettydita-1.2.jar"/>
 	
-	<transtype abstract="false" desc="Prettify the DITA files for a given document" name="pretty-dita">
+	<transtype
+    abstract="false"
+    desc="Prettify the DITA files for a given document"
+    name="pretty-dita"
+  >
 		<param name="args.indent" desc="How many characters to indent" type="enum">
 			<val>1</val>
 			<val>2</val>
@@ -16,22 +20,35 @@
 			<val>5</val>
 			<val>6</val>
 		</param>
-		<param name="args.style" desc="Whether to indent using tabs or spaces" type="enum">
+		<param
+      name="args.style"
+      desc="Whether to indent using tabs or spaces"
+      type="enum"
+    >
 			<val>tabs</val>
 			<val default="true">spaces</val>
 		</param>
-		<param name="args.require-pragma" type="enum"
-			desc="Restrict the plug-in to only format files that contain a special comment">
+		<param
+      name="args.require-pragma"
+      type="enum"
+      desc="Restrict the plug-in to only format files that contain a special comment"
+    >
 			<val>true</val>
 			<val default="true">false</val>
 		</param>
-		<param name="args.insert-pragma" type="enum"
-			desc="Insert a special @format marker at the top of files specifying that the file has been formatted">
+		<param
+      name="args.insert-pragma"
+      type="enum"
+      desc="Insert a special @format marker at the top of files specifying that the file has been formatted"
+    >
 			<val>true</val>
 			<val default="true">false</val>
 		</param>
-		<param name="args.print-width" type="string"
-			desc="Specify the line length that the printer will wrap on (default 80)" />
+		<param
+      name="args.print-width"
+      type="string"
+      desc="Specify the line length that the printer will wrap on (default 80)"
+    />
 	</transtype>
 
 	<!-- Import the pretty-dita transform's ANT file -->

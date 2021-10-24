@@ -16,7 +16,10 @@
 		<xsl:variable name="isFirstNode" select="count(../..) = 0 and position() = 1"/>
 		<xsl:variable name="previous" select="preceding-sibling::node()[1]"/>
 		<xsl:variable name="adjacentComplexElement" select="count($previous/*) &gt; 0 or count(*) &gt; 0"/>
-		<xsl:variable name="adjacentDifferentType" select="not(($previous/self::comment() and self::comment()) or ($previous/self::* and self::*))"/>
+		<xsl:variable
+      name="adjacentDifferentType"
+      select="not(($previous/self::comment() and self::comment()) or ($previous/self::* and self::*))"
+    />
 		<xsl:value-of select="$newline"/>
 
 		<xsl:call-template name="indent">
@@ -24,7 +27,9 @@
 		</xsl:call-template>
 
 		<xsl:copy>
-			<xsl:copy-of select="@*[not(name()='class' or name()='domains' or  local-name()='DITAArchVersion' or local-name()='space' or name()='xmlns:ditaarch')]"/>
+			<xsl:copy-of
+        select="@*[not(name()='class' or name()='domains' or  local-name()='DITAArchVersion' or local-name()='space' or name()='xmlns:ditaarch')]"
+      />
 			<xsl:choose>
 				<!-- Basic topic elements requiring a new line are listed here -->
 				<xsl:when test="self::abstract|self::shortdesc">

@@ -1,9 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?><!--ant-->
+<?xml version="1.0" encoding="UTF-8"?>
+<!--ant-->
 <!--
 	This file is part of the DITA-OT Pretty DITA Plug-in project.
 	See the accompanying LICENSE file for applicable licenses.
 -->
-<project name="fox.jason.pretty-dita" xmlns:if="ant:if" xmlns:unless="ant:unless" xmlns:dita="http://dita-ot.sourceforge.net" xmlns:pretty="antlib:fox.jason.prettydita"  >
+<project
+  name="fox.jason.pretty-dita"
+  xmlns:if="ant:if"
+  xmlns:unless="ant:unless"
+  xmlns:dita="http://dita-ot.sourceforge.net"
+  xmlns:pretty="antlib:fox.jason.prettydita"
+>
 
 	<!--
 		Runs the prettier over the specified files.
@@ -48,11 +55,24 @@
 				</condition>
 
 				<!-- The dita2pretty-dita XSLT Transform will indent elements -->
-				<pretty:format unless:set="prettier.ignore" src="@{src}" dir="@{dir}" file="${copy.file}"/>
+				<pretty:format
+          unless:set="prettier.ignore"
+          src="@{src}"
+          dir="@{dir}"
+          file="${copy.file}"
+        />
 
 				<!-- The whitespace is tidied up according to opinionated rules -->
-				<pretty:tidy-whitespace unless:set="prettier.ignore" file="${copy.file}" pragma="${prettier.hasPragma}"/>
-				<copy unless:set="prettier.ignore" file="${copy.file}" tofile="@{toDir}/@{src}"/>
+				<pretty:tidy-whitespace
+          unless:set="prettier.ignore"
+          file="${copy.file}"
+          pragma="${prettier.hasPragma}"
+        />
+				<copy
+          unless:set="prettier.ignore"
+          file="${copy.file}"
+          tofile="@{toDir}/@{src}"
+        />
 			</sequential>
 		</macrodef>
 
@@ -61,7 +81,11 @@
 			<param name="1" value="Prettifying DITA files."/>
 		</dita-ot-echo>
 		<!-- Interate over all files and prettify -->
-		<pretty:iterate macro="prettify-file" dir="${args.input.dir}" todir="${args.input.dir}" >
+		<pretty:iterate
+      macro="prettify-file"
+      dir="${args.input.dir}"
+      todir="${args.input.dir}"
+    >
 			<fileset refid="dist.contents"/>
 		</pretty:iterate>
 		<pretty:success-echo/>
@@ -84,7 +108,7 @@
 
 		<!-- The output file may be a single dita file -->
 		<condition property="pretty-dita.single-file">
-		  <matches pattern=".*\.dita$" string="${args.input}" /> 
+		  <matches pattern=".*\.dita$" string="${args.input}"/> 
 		</condition>
 
 		<!-- Set Default Values for parameters -->
@@ -94,8 +118,17 @@
 		<property name="args.insert-pragma" value="false"/>
 		<property name="args.print-width" value="80"/>
 
-		<fileset if:set="pretty-dita.single-file" id="dist.contents" file="${args.input}" />
-		<fileset unless:set="pretty-dita.single-file" id="dist.contents" dir="${args.input.dir}" casesensitive="yes">
+		<fileset
+      if:set="pretty-dita.single-file"
+      id="dist.contents"
+      file="${args.input}"
+    />
+		<fileset
+      unless:set="pretty-dita.single-file"
+      id="dist.contents"
+      dir="${args.input.dir}"
+      casesensitive="yes"
+    >
 			<include name="**/*.dita"/>
 			<include name="**/*.ditamap"/>
 		</fileset>
@@ -105,13 +138,15 @@
 	<!--
 		Ant target executed to run the prettifier.
 	-->
-	<target dita:extension="depends org.dita.dost.platform.InsertDependsAction"
-		name="dita2pretty-dita"
-		description="Prettify the DITA files for a given document"
-		dita:depends="{depend.preprocess.pre},
+	<target
+    dita:extension="depends org.dita.dost.platform.InsertDependsAction"
+    name="dita2pretty-dita"
+    description="Prettify the DITA files for a given document"
+    dita:depends="{depend.preprocess.pre},
 			build-init,
 			pretty-dita.init,
 			{depend.preprocess.post},
-			pretty-dita" />
+			pretty-dita"
+  />
 
 </project>
