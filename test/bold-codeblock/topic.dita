@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<task id="sound-add">
+    <title>Adds a blank at end of codeblock if it contains b</title>
+    <shortdesc>
+       ...
+    </shortdesc>
+    <taskbody>
+        <steps>
+            <step>
+                <cmd/>
+                <stepxmp>
+                    <codeblock>&lt;project&gt;
+&lt;display id="displayConfig"&gt;
+    name=" <b>EVT_Sound_SignalHorn </b>"/&gt;
+&lt;/project&gt;</codeblock>
+                </stepxmp>
+            </step>
+        </steps>
+    </taskbody>
+</task>
