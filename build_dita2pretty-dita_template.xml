@@ -15,7 +15,9 @@
 	<!--
 		Runs the prettier over the specified files.
 	-->
-	<target name="pretty-dita">	
+	<target 
+		name="pretty-dita"
+		description="Prettify the DITA files for a given document">	
 		<!--
 			Prettify an individual DITA file
 
@@ -141,7 +143,6 @@
 	<target
     dita:extension="depends org.dita.dost.platform.InsertDependsAction"
     name="dita2pretty-dita"
-    description="Prettify the DITA files for a given document"
     dita:depends="{depend.preprocess.pre},
 			build-init,
 			pretty-dita.init,
